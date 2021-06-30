@@ -12,6 +12,11 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
 
+  person = db.relationship("Comment", back_populates="comments")
+  savedrecipe = db.relationship("My_Recipe", back_populates="userrecipe")
+  savedpost = db.relationship("My_Post", back_populates="userpost")
+  savedplan =db.relationship("My_Meal", back_populates="usermeal")
+
 
   @property
   def password(self):

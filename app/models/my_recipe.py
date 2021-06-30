@@ -12,3 +12,6 @@ class My_Recipe(db.Model):
     description = db.Column(db.String(100), nullable = False, unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     recipeId = db.Column(db.Integer, db.ForeignKey("recipes.id"))
+
+    mykitchenrecipe = db.relationship("Recipe", back_populates="recipes")
+    userrecipe = db.relationship("User", back_populates="savedrecipe")

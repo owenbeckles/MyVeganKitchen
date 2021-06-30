@@ -11,3 +11,6 @@ class My_Post(db.Model):
     description = db.Column(db.String(100), nullable = False, unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     blogId = db.Column(db.Integer, db.ForeignKey("blogs.id"))
+
+    mykitchenblog = db.relationship("Blog", back_populates="post")
+    userpost = db.relationship("User", back_populates="savedpost")

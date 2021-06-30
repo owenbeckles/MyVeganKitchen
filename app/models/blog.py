@@ -9,3 +9,5 @@ class Blog(db.Model):
     title = db.Column(db.String(50), nullable = False, unique = True)
     content = db.Column(db.Text, nullable = False, unique = True)
     description = db.Column(db.String(100), nullable = False, unique = True)
+
+    post = db.relationship("My_Post", back_populates="mykitchenblog")

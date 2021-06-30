@@ -10,3 +10,6 @@ class Recipe(db.Model):
     ingredients = db.Column(db.Text, nullable = False, unique = True)
     instructions = db.Column(db.Text, nullable = False, unique = True)
     description = db.Column(db.String(100), nullable = False, unique = True)
+
+    recipe = db.relationship("My_Recipe", back_populates="mykitchenrecipe")
+    recipecomment = db.relationship("Comment", back_populates="usercomments")

@@ -12,3 +12,6 @@ class My_Meal(db.Model):
     description = db.Column(db.String(100), nullable = False, unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     mealPlanId = db.Column(db.Integer, db.ForeignKey("mealplans.id"))
+
+    mykitchenplans = db.relationship("MealPlan", back_populates="plan")
+    usermeal = db.relationship("User", back_populates="savedplan")
