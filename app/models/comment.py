@@ -8,3 +8,4 @@ class Comment(db.Model):
     comment = db.Column(db.Text, unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     recipeId = db.Column(db.Integer, db.ForeignKey("recipes.id"))
+    
