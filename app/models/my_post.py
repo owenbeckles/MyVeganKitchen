@@ -5,8 +5,6 @@ class My_Post(db.Model):
     __tablename__ = 'my_posts'
 
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(50), unique = True)
-    description = db.Column(db.String(100), unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     blogId = db.Column(db.Integer, db.ForeignKey("blogs.id"))
 

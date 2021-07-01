@@ -5,8 +5,6 @@ class My_Recipe(db.Model):
     __tablename__ = 'my_recipes'
 
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(50), unique = True)
-    description = db.Column(db.String(100), unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     recipeId = db.Column(db.Integer, db.ForeignKey("recipes.id"))
 
