@@ -64,28 +64,47 @@ def seed_recipes():
     type='Lunch/Dinner',
     ingredients='2 cups walnuts raw walnuts;8 oz package whole mushrooms;16 oz package gnocchi;12 oz marinara sauce;4 oz vegan cheddar shredded cheese;1/4 cup vegan parmesan;1/4 cup red bell peppers (chopped);1/4 cup green bell peppers (chopped);4 garlic cloves finely (chopped);1 cup yellow onions (chopped);1 tsp dried oregano;1 tsp dried basil;1 tsp black pepper;1 tsp salt;1 tbsp maple syrup;1 cup vegan beef broth;2 tbsp grapeseed oil;1 cup of water',
     instructions='In a food processor ground walnuts for 1 minute. Set aside. On medium heat in a large skillet add oil, onions and mushrooms. Cook until onions are translucent. Add garlic and peppers. Cook for about 1 minute, add grounded walnuts. Cook for 1 to 2 minutes, add the broth, oregano, basil, black pepper, salt, and maple syrup. Stir and allow to cook about 5 minutes. Add the marina sauce, gnocchi and water, stir and cook another 5 minutes. Stir and remove from heat. Stir in the shredded cheddar and parmesan, give it a good stir to incorporate the cheese. Once the cheese has melted you’re done. Serve with a side salad and some crusty bread.',
-    description='')    
+    description='Perfectly cooked potatoes seasoned in a cheesy tomato sauce.')    
 
     recipe10 = Recipe(name='vegetableeggrolls',
     title='Homemade Vegetable Egg Rolls',
     type='Appetizer',
     ingredients='1 package coleslaw cabbage mix;6-8 wonton wrappers;1/2 cup yellow onion (chopped);2 stalks green onions (chopped);2 garlic cloves (chopped);1 tbsp fresh grated ginger;grapeseed oil (for frying);small bowl of water;salt and black pepper (to taste)',
     instructions='In a skillet on medium heat add 2 tbsp grapeseed oil. Add the onions and allow to cook for about a minute. Add the garlic and ginger, stir to combine. Now add the cabbage stir to combine and cover the skillet. Allow to cook for 5- 7 minutes stirring occasionally. Season with salt and pepper to taste and remove from heat. Set aside to cool down. Place a skillet or wok on medium to high heat. Add about a 1/2 cup of grapeseed oil. Enough oil to deep fry the egg rolls. On a work surface lay wonton wrapper flat. Use a spoon to add cabbage mixture to the center of the wrapper. Fold the sides of the wrapper to the center, then fold the bottom of the wrapper to the center. Roll the egg roll, wet your fingers and moisten the remaining flap of the wrap and seal the wonton. Place the egg roll in the hot oil and allow to brown on both sides. Remove and place on a paper towel lined plate to absorb the excess oil. Serve with your favorite sauce.',
-    description='')
+    description='Asian inspired seasoned cabbage wrapped in a crispy outer shell.')
 
     recipe11 = Recipe(name='avocadowontons',
     title='Avocado Wontons',
     type='Appetizer',
     ingredients='1/4 cup red onion (chopped);2 tbsp cilantro (finely chopped);1 tbsp jalapeño peppers (chopped);1 lime (juiced);1 tsp salt;wonton wrappers (approx. 20);1 cup grapeseed oil (wok method)/2 cups (skillet method)',
     instructions='Place the red onions, cilantro, jalapeño, lime juice, and salt in a mortar or bowl and combine with a pestle or fork (mortar and pestle preferred). Once combined add avocado and mix, still keeping it chunky. Lay your wonton wrappers on a cutting board, I usually do 6 at a time. Use a small spoon to scoop a small amount of the avocado mixture onto the wonton wrapper. Be sure not to overfill your wonton. Wet your fingers with water and dab around the edges and then press all of the edges in a star like X shape and firmly press together. Your wonton should be completely sealed before frying to maintain shape. Heat a wok or skillet with grapeseed oil over medium-high heat. Place the filled wonton into the hot oil, once golden brown flip over and cook on the other side. These wontons cook really fast so be sure to keep an eye on them. Once cooked, remove from oil onto a plate with paper towels to remove any excess oil. I serve these with sweet chili sauce but these can be served with your favorite sauce as well.',
-    description='')
+    description='Deep fried guacamole.')
 
     recipe12 = Recipe(name='loadednachos',
     title='Loaded Nachos',
     type='Appetizer',
     ingredients='cashew cheese sauce;4 oz vegan shredded cheddar cheese;12 oz vegan chorizo;1 can chipotle peppers in adobo sauce;1/4 yellow onions chopped;2 garlic cloves chopped;1/2 cup vegan chicken broth;1 tbsp grapeseed oil;1 tsp turmeric;2 tbsp green onions;2 tbsp cilantro;1 bag tortilla chips;jalapeño (optional);avocado (optional)',
     instructions='On medium heat in a skillet, add oil and chorizo. Start to brown chorizo then add the onions and garlic cook for about 3 minutes. Add about 2 to 3 chipotles, you can add more if you like it more spicy. Cook mixture for about 5 minutes then set aside. In a sauce pan on medium heat add the cashew cheese sauce, shredded cheese, chicken broth and turmeric. Stir constantly until the shredded cheese has melted. If the cheese sauce becomes too thick you can always add more broth. The sauce should be thin enough to pour over the tortilla chips. On a large platter place the tortilla chips. Use a spoon to layer the chorizo on top of the tortilla, then pour the cheese sauce on top. Add the green onions, cilantro, jalapeño and diced avocado. Serve immediately.',
-    description='')
+    description='Tortilla chips topped with tons of creamy cheese and well seasoned chorizo.')
+
+    db.session.add(recipe1)
+    db.session.add(recipe2)
+    db.session.add(recipe3)
+    db.session.add(recipe4)
+    db.session.add(recipe5)
+    db.session.add(recipe6)
+    db.session.add(recipe7)
+    db.session.add(recipe8)
+    db.session.add(recipe9)
+    db.session.add(recipe10)
+    db.session.add(recipe11)
+    db.session.add(recipe12)
+
+    db.session.commit()
+
+    def undo_recipes():
+        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+        db.session.commit()
 
 
     
