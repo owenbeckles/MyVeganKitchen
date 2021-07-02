@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User
 
@@ -23,19 +23,27 @@ def user(id):
 @login_required
 
 # Comments
-@user_routes.route('/recipes/<id>', methods = ['POST', 'PUT', 'DELETE'])
+@user_routes.route('/recipes/<int:id>', methods = ['POST', 'PUT', 'DELETE'])
 @login_required
-def managing_comments():
-    # if request.method == 'POST':
-    #     recipeId = int()
-    #     comments.append(Comment.query.get(recipeId))
-    # elif request.method == 'PUT':
-    # elif request.method == 'DELETE':
-    # else:
+def managing_comments(id):
+    if request.method == 'POST':
+        data = request.json
+        newcomment = Comment()
+        newComment.userId = request.json['userId']
+        newComment.recipeId = request.json['recipeId']
+        newComment.comment = data
+        db.session.add(newComment)
+        db.session.commit()
+    elif request.method == 'PUT':   
+    elif request.method == 'DELETE':
+        comment = Comment.query.get(id)
+        db.session.delete(comment)
+        db.session.commit()
+    else:
 
 # Settings
-@user_routes.route('/settings/<id>')
+@user_routes.route('/settings/<int:id>')
 @login_required
 
-@user_routes.route('/settings/<id>/edit', methods = ['PUT'])
+@user_routes.route('/settings/<int:id>/edit', methods = ['PUT'])
 @login_required
