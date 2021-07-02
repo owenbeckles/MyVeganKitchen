@@ -17,3 +17,25 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+# My Kitchen
+@user_routes.route('/mykitchen')
+@login_required
+
+# Comments
+@user_routes.route('/recipes/<id>', methods = ['POST', 'PUT', 'DELETE'])
+@login_required
+def managing_comments():
+    # if request.method == 'POST':
+    #     recipeId = int()
+    #     comments.append(Comment.query.get(recipeId))
+    # elif request.method == 'PUT':
+    # elif request.method == 'DELETE':
+    # else:
+
+# Settings
+@user_routes.route('/settings/<id>')
+@login_required
+
+@user_routes.route('/settings/<id>/edit', methods = ['PUT'])
+@login_required
