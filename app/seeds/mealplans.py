@@ -8,7 +8,11 @@ def seed_mealplans():
     description='A meal plan curated towards new vegans.'
     )
 
+    user = User.query.one()
+
     db.session.add(plan1)
+
+    user.mealplans.extend([plan1])
 
     db.session.commit()
 

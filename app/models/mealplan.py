@@ -2,6 +2,8 @@ from .db import db
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
+my_meals = db.Table('my_meals', db.Column(db.Integer, db.ForeignKey("users.id")), db.Column(db.Integer, db.ForeignKey("mealplans.id")))
+
 class MealPlan(db.Model):
     __tablename__ = 'mealplans'
 
@@ -11,6 +13,5 @@ class MealPlan(db.Model):
     price = db.Column(db.Float(5,2), nullable = False, unique = True)
     overview = db.Column(db.Text, nullable = False, unique = True)
     description = db.Column(db.String(100), nullable = False, unique = True)
-    created_at = db.Column(db.DateTime, default=datetime.now())
 
-    plan = db.relationship("My_Meal", back_populates="mykitchenplans")
+    users = db.relationship('User', secondary=my_meals, backref='mealplans')

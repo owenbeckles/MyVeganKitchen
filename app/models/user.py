@@ -13,9 +13,6 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable = False)
 
   person = db.relationship("Comment", back_populates="comments")
-  savedrecipe = db.relationship("My_Recipe", back_populates="userrecipe")
-  savedpost = db.relationship("My_Post", back_populates="userpost")
-  savedplan =db.relationship("My_Meal", back_populates="usermeal")
 
 
   @property
@@ -37,5 +34,7 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      "blogs": [b.to_dict() for b in self.blogs]
+      "blogs": [b.to_dict() for b in self.blogs],
+      "recipes": [r.to_dict() for r in self.recipes],
+      'mealplans':[m.to_dict() for m in self.mealplans]
     }
