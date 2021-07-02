@@ -7,3 +7,7 @@ def seed_my_meals():
     db.session.add(my_meal1)
 
     db.session.commit()
+
+    def undo_my_meals():
+        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+        db.session.commit()

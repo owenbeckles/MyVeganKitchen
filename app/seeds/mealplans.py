@@ -11,3 +11,7 @@ def seed_mealplans():
     db.session.add(plan1)
 
     db.session.commit()
+
+    def undo_mealplans():
+        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+        db.session.commit()
