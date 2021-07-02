@@ -1,4 +1,4 @@
-from app.models import db, Blog
+from app.models import db, Blog, User
 
 def seed_blogs():
     post1 = Blog(name='fasting',
@@ -20,11 +20,15 @@ def seed_blogs():
     title='Tofu',
     content='Let’s talk about tofu.;For vegans and vegetarians, tofu is a very important ingredient of our diet as it is packed with much needed proteins.;Tofu, which originates from China, is a type of food produced by condensation of soy milk in a similar process to making cheese. Tofu is packed with a lot of beneficial vitamins and minerals, such as vitamin B6, vitamin K, thiamin, riboflavin, folate, calcium, iron, phosphorus, magnesium, zinc, copper, selenium, and manganese.;I do want to mention soybeans today are mostly genetically modified (GMO) and if you want the best then you should seek organic tofu.;Here are 6 Health Benefits:;Reduces Appetite;If you are trying to loose weight you should consume tofu more often. Tofu is packed with dietary fiber, proteins, vitamins, and minerals. This will keep you full longer. Another great benefit of tofu is that it is low in calories, which means that you will have only befits from its consumption, regardless if you eat a little bit more than you intended.;Promotes Brain Health;If you want to have better brain health then you should make sure to consume healthy foods, including tofu. Lecithin found in tofu promotes better brain health. Another great health benefit to tofu when it comes to brain health is it’s anti-inflammatory properties.;Prevents Anemia;Tofu is a very rich source of iron, eating tofu consistently for about 3months and you will start to notice an improvement in lab results.;Improves Blood Glucose levels;Those who consume tofu on a regular basis will have improvement of baseline insulin levels, as well as average fasting blood glucose levels.;Lowers Cholesterol Levels;Tofu is packed with saponins, they can reduce the levels of LDL in the blood, otherwise known as bad cholesterol.;Reduces the Risk of Heart Diseases;Researchers have shown that tofu can reduce the risk of heart disease based on the fact that isoflavones reduce the inflammation of blood vessels, improving their elasticity at the same time. Also, tofu contains saponins, which have a protective effect on the heart.;Make tofu part of your healthy diet. There are so many delicious recipes to be made with tofu, why not make it part of your health plant based diet.',
     description='One of the most versatile vegan proteins.')
+
+    user = User.query.one()
     
     db.session.add(post1)
     db.session.add(post2)
     db.session.add(post3)
     db.session.add(post4)
+
+    user.blogs.extend([post1, post2, post3, post4])
 
     de.session.commit()
 

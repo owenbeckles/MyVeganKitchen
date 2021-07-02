@@ -7,7 +7,7 @@ def seed_my_recipes():
     my_recipe2 = My_Recipe(recipeId=2,
     userId=1)
 
-    my_recip3 = My_Recipe(recipeId=3,
+    my_recipe3 = My_Recipe(recipeId=3,
     userId=1)
 
     my_recipe4 = My_Recipe(recipeId=4,
