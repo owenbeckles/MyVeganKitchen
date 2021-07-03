@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required
-from app.models import User, Comment, Recipe
+from app.models import db, User, Comment, Recipe
 
 user_routes = Blueprint('users', __name__)
 
@@ -24,12 +24,18 @@ def user(id):
 def my_kitchen():
     if request.method == 'POST':
         data = request.json
-        recipeId = int(data['recipeId'])
-        current_user.recipes.append(Recipe.query.get(recipeId))
+        dict_type = {
+            recipe: {current_user.recipes, Recipe},
+            blogpost: {current_user.blogposts, Blogpost},
+            mealplan: {current_user.mealplans, MealPlan}
+            }
+        id = int(data['id'])
+        assoc, model = dict_type[type]
+        assoc.append(model.query.get(id))
         db.session.commit()
         return {}
     elif request.method == 'DELETE':
-        current_user.recipes.remove(Recipe.query.get(recipeId))
+        assoc.remove(model.query.get(id))
         db.session.commit()
         return {}
 
@@ -53,8 +59,17 @@ def managing_comments(id):
     db.session.commit()
 
 # Settings
-# @user_routes.route('/settings/<int:id>')
-# @login_required
+@user_routes.route('/settings/<int:id>')
+@login_required
+def settings_page(id):
+    settings = User.query.get(id)
+    return settings.to_dict()
 
-# @user_routes.route('/settings/<int:id>/edit', methods = ['PUT'])
-# @login_required
+@user_routes.route('/settings/<int:id>/edit', methods = ['PUT'])
+@login_required
+def settings_edit(id):
+    id = request.json['id']
+    user = User.query.get(id)
+    user.email = request.json['email']
+    db.session.add(user)
+    db.session.commit()
