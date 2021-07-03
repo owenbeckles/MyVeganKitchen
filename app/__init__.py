@@ -8,6 +8,11 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.recipes_routes import recipes_routes
+from .api.mealplans_routes import mealplans_routes
+from .api.homepage_routes import homepage_routes
+from .api.blogs_routes import blogs_routes
+
 
 from .seeds import seed_commands
 
@@ -31,6 +36,10 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(recipes_routes, url_prefix='/api/recipes')
+app.register_blueprint(blogs_routes, url_prefix='/api/blog')
+app.register_blueprint(mealplans_routes, url_prefix='/api/plans')
+
 db.init_app(app)
 Migrate(app, db)
 

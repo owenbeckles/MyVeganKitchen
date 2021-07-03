@@ -1,4 +1,4 @@
-from app.models import db, MealPlan
+from app.models import db, MealPlan, User
 
 def seed_mealplans():
     plan1 = MealPlan(name='7daymealplan',
@@ -16,6 +16,6 @@ def seed_mealplans():
 
     db.session.commit()
 
-    def undo_mealplans():
-        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
-        db.session.commit()
+def undo_mealplans():
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.commit()

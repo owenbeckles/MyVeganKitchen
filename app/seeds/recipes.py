@@ -1,4 +1,4 @@
-from app.models import db, Recipe
+from app.models import db, Recipe, User
 
 def seed_recipes():
     
@@ -106,9 +106,9 @@ def seed_recipes():
 
     db.session.commit()
 
-    def undo_recipes():
-        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
-        db.session.commit()
+def undo_recipes():
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.commit()
 
 
     
