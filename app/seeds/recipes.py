@@ -1,4 +1,4 @@
-from app.models import db, Recipe
+from app.models import db, Recipe, User
 
 def seed_recipes():
     
@@ -87,6 +87,8 @@ def seed_recipes():
     instructions='On medium heat in a skillet, add oil and chorizo. Start to brown chorizo then add the onions and garlic cook for about 3 minutes. Add about 2 to 3 chipotles, you can add more if you like it more spicy. Cook mixture for about 5 minutes then set aside. In a sauce pan on medium heat add the cashew cheese sauce, shredded cheese, chicken broth and turmeric. Stir constantly until the shredded cheese has melted. If the cheese sauce becomes too thick you can always add more broth. The sauce should be thin enough to pour over the tortilla chips. On a large platter place the tortilla chips. Use a spoon to layer the chorizo on top of the tortilla, then pour the cheese sauce on top. Add the green onions, cilantro, jalapeño and diced avocado. Serve immediately.',
     description='Tortilla chips topped with tons of creamy cheese and well seasoned chorizo.')
 
+    user = User.query.one()
+
     db.session.add(recipe1)
     db.session.add(recipe2)
     db.session.add(recipe3)
@@ -100,11 +102,13 @@ def seed_recipes():
     db.session.add(recipe11)
     db.session.add(recipe12)
 
+    user.recipes.extend([recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10, recipe11, recipe12])
+
     db.session.commit()
 
-    def undo_recipes():
-        db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
-        db.session.commit()
+def undo_recipes():
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.commit()
 
 
     

@@ -1,9 +1,6 @@
 from .db import db
 from .user import User
-from .recipe import Recipe
-from .blog import Blog
-from .mealplan import MealPlan
-from .my_recipe import My_Recipe
-from .my_post import My_Post
-from .my_meal import My_Meal
+from .recipe import Recipe, my_recipes
+from .blog import Blog, my_posts
+from .mealplan import MealPlan, my_meals
 from .comment import Comment
