@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { ThemeContext } from '../context/ThemeContext';
+import Switch from '@material-ui/core/Switch';
+import { light, dark } from '../data/theme'
 
 const NavBar = () => {
-  const { setTheme } = useContext(ThemeContext);
+  const { setTheme, theme } = useContext(ThemeContext);
   return (
     <nav>
       <ul>
@@ -32,8 +34,9 @@ const NavBar = () => {
           <LogoutButton />
         </li>
       </ul>
-      <button onClick={() => setTheme('dark')}>Dark Mode</button>
-      <button onClick={() => setTheme('light')}>Light Mode</button>
+      <Switch onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))} />
+      {/* <button onClick={() => setTheme('dark')}>Dark Mode</button>
+      <button onClick={() => setTheme('light')}>Light Mode</button> */}
     </nav>
   );
 }

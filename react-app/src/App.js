@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
+import MyKitchen from './components/My Kitchen';
+import Helmet from 'react-helmet';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -44,6 +46,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path="/mykitchen" exact={true}>
+            <MyKitchen />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
