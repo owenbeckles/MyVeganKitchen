@@ -38,8 +38,6 @@ const NavBar = () => {
       <Switch 
         color="green"
         onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))} />
-      {/* <button onClick={() => setTheme('dark')}>Dark Mode</button>
-      <button onClick={() => setTheme('light')}>Light Mode</button> */}
     </nav>
   );
 }

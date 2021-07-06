@@ -1,18 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const light = {
-    background: 'white',
     text: 'black'
 }
 
 export const dark = {
-    background: 'grey',
-    text: 'blue'
+    background: 'black',
+    text: '#C9D1D9'
 }
-
-// export const Theme = createGlobalStyle`
-//     body {
-//         background-color: ${props => props.theme.body}
-//     }
-
-// `

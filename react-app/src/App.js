@@ -8,8 +8,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import MyKitchen from './components/My Kitchen';
-import Helmet from 'react-helmet';
+import MyKitchen from './components/MyKitchen';
+import Recipes from './components/Recipes';
+import Plans from './components/Plans';
+import Blog from './components/Blog';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeContext, useThemeContext } from './context/ThemeContext'
 
@@ -22,8 +24,7 @@ function App() {
   const { theme, rootEl } = useThemeContext();
   
   useEffect(() => {
-    debugger
-    rootEl.current.parentNode.className = theme == 'light' ? 'dark' : 'light'
+    rootEl.current.parentNode.className = theme == 'light' ? 'light' : 'dark'
   }, [theme])
 
   useEffect(() => {
@@ -58,6 +59,15 @@ function App() {
         </ProtectedRoute>
         <Route path="/mykitchen" exact={true}>
             <MyKitchen />
+        </Route>
+        <Route path="/recipes" exact={true}>
+            <Recipes />
+        </Route>
+        <Route path="/plans" exact={true}>
+            <Plans />
+        </Route>
+        <Route path="/blog" exact={true}>
+            <Blog />
         </Route>
       </Switch>
     </BrowserRouter>
