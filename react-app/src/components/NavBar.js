@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { ThemeContext } from '../context/ThemeContext';
 
 const NavBar = () => {
+  const { setTheme } = useContext(ThemeContext);
   return (
     <nav>
       <ul>
@@ -30,6 +32,8 @@ const NavBar = () => {
           <LogoutButton />
         </li>
       </ul>
+      <button onClick={() => setTheme('dark')}>Dark Mode</button>
+      <button onClick={() => setTheme('light')}>Light Mode</button>
     </nav>
   );
 }

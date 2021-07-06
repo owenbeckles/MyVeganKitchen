@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { ThemeContext } from '../../context/ThemeContext';
+import { light, dark } from '../../data/theme';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +12,10 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const { setTheme, light, dark, theme } = useContext(ThemeContext);
+
+  const themeChoice = theme === 'light' ? light : dark;
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -39,9 +45,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form style={{backgroundColor: themeChoice.background}} onSubmit={onSignUp}>
       <div>
-        <label>User Name</label>
+        <label style={{color: themeChoice.text }}>User Name</label>
         <input
           type="text"
           name="username"
@@ -50,7 +56,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label style={{color: themeChoice.text }}>Email</label>
         <input
           type="text"
           name="email"
@@ -59,7 +65,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label style={{color: themeChoice.text }} >Password</label>
         <input
           type="password"
           name="password"
@@ -68,7 +74,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label style={{color: themeChoice.text }}>Repeat Password</label>
         <input
           type="password"
           name="repeat_password"
