@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, { createContext, useState, useRef, useContext } from 'react';
 import { light, dark } from '../data/theme';
 
 export const ThemeContext = createContext();
@@ -13,3 +13,8 @@ export const ThemeProvider = (props) => {
     )
 }
 
+export const useThemeContext = () => {
+    return (
+        useContext(ThemeContext)
+    )
+}

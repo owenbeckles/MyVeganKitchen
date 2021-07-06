@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { ThemeContext } from '../context/ThemeContext';
 import Switch from '@material-ui/core/Switch';
+import { green } from '@material-ui/core/colors';
 import { light, dark } from '../data/theme'
 
 const NavBar = () => {
@@ -34,7 +35,9 @@ const NavBar = () => {
           <LogoutButton />
         </li>
       </ul>
-      <Switch onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))} />
+      <Switch 
+        color="green"
+        onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))} />
       {/* <button onClick={() => setTheme('dark')}>Dark Mode</button>
       <button onClick={() => setTheme('light')}>Light Mode</button> */}
     </nav>

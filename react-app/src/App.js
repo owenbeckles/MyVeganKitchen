@@ -10,11 +10,21 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import MyKitchen from './components/My Kitchen';
 import Helmet from 'react-helmet';
+import { ThemeProvider } from './context/ThemeContext';
+import { ThemeContext, useThemeContext } from './context/ThemeContext'
+
 
 function App() {
   const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const { theme, rootEl } = useThemeContext();
+  
+  useEffect(() => {
+    debugger
+    rootEl.current.parentNode.className = theme == 'light' ? 'dark' : 'light'
+  }, [theme])
 
   useEffect(() => {
     (async() => {

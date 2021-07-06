@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ThemeProvider } from './context/ThemeContext';
+import { ThemeContext, useThemeContext } from './context/ThemeContext'
 
 const store = configureStore();
 
 const Root = () => {
+  
   return (
     <ThemeProvider>
       <App />
