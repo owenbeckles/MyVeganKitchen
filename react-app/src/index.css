@@ -5,3 +5,10 @@
 .light {
     background-color: #F9F5F1;
 }
+
+.mvk-title {
+    text-decoration: none;
+    color: #F08E80;
+    font-size: 35.28px;
+    cursor: pointer;
+}

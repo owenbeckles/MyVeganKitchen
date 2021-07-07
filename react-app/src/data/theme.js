@@ -5,6 +5,7 @@ export const light = {
 }
 
 export const dark = {
-    background: 'black',
-    text: '#C9D1D9'
+    background: '#0D1117',
+    text: '#C9D1D9',
+    title: '#607466'
 }

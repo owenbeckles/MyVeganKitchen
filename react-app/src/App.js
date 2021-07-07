@@ -12,8 +12,10 @@ import MyKitchen from './components/MyKitchen';
 import Recipes from './components/Recipes';
 import Plans from './components/Plans';
 import Blog from './components/Blog';
+import Homepage from './components/Homepage'
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeContext, useThemeContext } from './context/ThemeContext'
+
 
 
 function App() {
@@ -68,6 +70,9 @@ function App() {
         </Route>
         <Route path="/blog" exact={true}>
             <Blog />
+        </Route>
+        <Route path="/" exact={true}>
+            <Homepage />
         </Route>
       </Switch>
     </BrowserRouter>
