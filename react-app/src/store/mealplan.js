@@ -37,7 +37,7 @@ export const getAllPlans = () => async (dispatch) => {
 
 const initialState = {};
 
-export default function reducer(state = initialState, action) {
+export default function mealPlans(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_PLAN:

@@ -37,7 +37,7 @@ export const getAllRecipes = () => async (dispatch) => {
 
 const initialState = {};
 
-export default function reducer(state = initialState, action) {
+export default function recipes(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_RECIPE:
