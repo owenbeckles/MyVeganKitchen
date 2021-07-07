@@ -24,6 +24,9 @@ export const getIndividualMealPlan = (id) => async (dispatch) => {
         method: 'GET'
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(getPlan(data));
 }
 
@@ -32,6 +35,9 @@ export const getAllPlans = () => async (dispatch) => {
         method: 'GET',
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(allPlans(data));
 }
 

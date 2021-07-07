@@ -24,6 +24,9 @@ export const getIndividualBlogPost = (id) => async (dispatch) => {
         method: 'GET'
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(getPost(data));
 }
 
@@ -32,6 +35,9 @@ export const getAllBlogPosts = () => async (dispatch) => {
         method: 'GET',
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(allPosts(data));
 }
 

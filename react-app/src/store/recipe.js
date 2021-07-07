@@ -24,6 +24,9 @@ export const getIndividualRecipe = (id) => async (dispatch) => {
         method: 'GET'
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(getRecipe(data));
 }
 
@@ -32,6 +35,9 @@ export const getAllRecipes = () => async (dispatch) => {
         method: 'GET',
     });
     const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(allRecipes(data));
 }
 
