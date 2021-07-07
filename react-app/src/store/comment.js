@@ -96,7 +96,16 @@ export default function comments(state = [], action) {
             return newState;
         case DELETE_COMMENT:
             newState = [...state];
-            
+            newState.forEach(id => {
+                if (newState.id === action.payload.id) newState.splice(id, 1)
+            })
+            return newState;
+        case EDIT_COMMENT:
+            newState = [...state];
+            newState.forEach(id => {
+                if (newState.id === action.payload.id) newState.splice(id, 1)
+            })
+            return newState;
     }
 }
 
