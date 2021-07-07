@@ -97,13 +97,13 @@ export default function commentsReducer(state = [], action) {
         case DELETE_COMMENT:
             newState = [...state];
             newState.forEach(id => {
-                if (newState.id === action.payload.id) newState.splice(id, 1)
+                if (newState[id].id === action.payload.id) newState.splice(id, 1)
             })
             return newState;
         case EDIT_COMMENT:
             newState = [...state];
             newState.forEach(id => {
-                if (newState.id === action.payload.id) newState.splice(id, 1)
+                if (newState[id].id === action.payload.id) newState.splice(id, 1)
             })
             return newState;
         default:
