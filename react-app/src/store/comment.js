@@ -106,6 +106,8 @@ export default function commentsReducer(state = [], action) {
                 if (newState.id === action.payload.id) newState.splice(id, 1)
             })
             return newState;
+        default:
+            return state;
     }
 }
 
