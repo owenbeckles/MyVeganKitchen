@@ -87,7 +87,7 @@ export const deleteComments = (comment, id, recipeId, userId) => async (dispatch
 }
 
 
-export default function comments(state = [], action) {
+export default function commentsReducer(state = [], action) {
     let newState;
     switch (action.type) {
         case POST_COMMENT:

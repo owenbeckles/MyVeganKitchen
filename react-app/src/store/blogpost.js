@@ -11,10 +11,10 @@ const getPost = (post) => {
     }
 }
 
-const allPosts = () => {
+const allPosts = (post) => {
     return {
         type: ALL_POSTS,
-        payload,
+        payload: post,
     }
 }
 
@@ -43,7 +43,7 @@ export const getAllBlogPosts = () => async (dispatch) => {
 
 const initialState = {};
 
-export default function blogPosts(state = initialState, action) {
+export default function blogPostReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_POST:

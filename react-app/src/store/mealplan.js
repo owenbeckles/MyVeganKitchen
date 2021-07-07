@@ -11,10 +11,10 @@ const getPlan = (plan) => {
     }
 }
 
-const allPlans = () => {
+const allPlans = (plan) => {
     return {
         type: ALL_PLANS,
-        payload,
+        payload: plan,
     }
 }
 
@@ -43,7 +43,7 @@ export const getAllPlans = () => async (dispatch) => {
 
 const initialState = {};
 
-export default function mealPlans(state = initialState, action) {
+export default function mealPlanReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_PLAN:

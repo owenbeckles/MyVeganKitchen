@@ -11,10 +11,10 @@ const getRecipe = (recipe) => {
     }
 }
 
-const allRecipes = () => {
+const allRecipes = (recipe) => {
     return {
         type: ALL_RECIPES,
-        payload,
+        payload: recipe,
     }
 }
 
@@ -43,7 +43,7 @@ export const getAllRecipes = () => async (dispatch) => {
 
 const initialState = {};
 
-export default function recipes(state = initialState, action) {
+export default function recipesReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_RECIPE:

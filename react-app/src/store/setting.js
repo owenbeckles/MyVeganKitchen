@@ -54,11 +54,11 @@ export const editUserSettings = (username, email, id) => async (dispatch) => {
 
 const initialState = {}
 
-export default function settings(state = initialState, action) {
-    let newState;
-    switch (action.type) {
-        case GET_INFO:
-            newState.Object.assign({}, state);
-            
-    }
-}
+// export default function settings(state = initialState, action) {
+//     let newState;
+//     switch (action.type) {
+//         case GET_INFO:
+//             newState.Object.assign({}, state);
+
+//     }
+// }
