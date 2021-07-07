@@ -35,7 +35,7 @@ export const getAllRecipes = () => async (dispatch) => {
     dispatch(allRecipes(data));
 }
 
-const initialState = { recipe: null };
+const initialState = {};
 
 export default function reducer(state = initialState, action) {
     let newState;
