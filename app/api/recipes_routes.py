@@ -3,10 +3,10 @@ from app.models import db, Recipe
 
 recipes_routes = Blueprint('recipes', __name__)
 
-@recipes_routes.route('/recipes')
+@recipes_routes.route('/')
 def recipes():
-    all_recipes = Recipe.query.filter_by(Recipe).order_by(Recipe.id.desc()).all()
-    return all_recipes.to_dict()
+    all_recipes = Recipe.query.order_by(Recipe.id.desc()).all()
+    return {'recipe': [recipe.to_dict() for recipe in all_recipes]}
 
 
 @recipes_routes.route('/recipes/<int:id>')

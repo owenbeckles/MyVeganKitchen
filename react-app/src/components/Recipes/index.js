@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from '../../context/ThemeContext';
 import { getAllRecipes } from '../../store/recipe';
 import { useHistory } from 'react-router-dom';
+import IndividualRecipe from '../IndividualRecipe';
 
 
 const Recipes = () => {
@@ -12,12 +13,13 @@ const Recipes = () => {
     const history = useHistory();
     const recipes = useSelector((state) => state.recipes);
     const allRecipes = Object.values(recipes);
+    const [activeRecipe, setactiveRecipe] = useState(false);
 
     const themeChoice = theme === 'light' ? light : dark;
 
     useEffect(() => {
         dispatch(getAllRecipes());
-    })
+    }, [])
 
     if(!recipes) return null;
 
@@ -28,11 +30,14 @@ const Recipes = () => {
         <div>
             {allRecipes.map(recipe => {
                 return (
-                    <h1>{recipe.title}</h1>
+                    <a onClick={(e) => {
+                        e.preventDefault()
+                        setactiveRecipe(recipe)
+                    }}>{recipe.title}</a>
                 )
             })}
         </div>
-
+            {activeRecipe && <IndividualRecipe recipe={activeRecipe}/>}
         </div>
     )
 }

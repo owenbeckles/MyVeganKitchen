@@ -31,15 +31,14 @@ export const getIndividualRecipe = (id) => async (dispatch) => {
 }
 
 export const getAllRecipes = () => async (dispatch) => {
-    const res = await fetch('/api/recipes', {
+    const res = await fetch('/api/recipes/', {
         method: 'GET',
     });
     const data = await res.json();
     if (data.errors) {
         return data;
     }
-    dispatch(allRecipes(data));
-    return data;
+    dispatch(allRecipes(data.recipe));
 }
 
 const initialState = {};
