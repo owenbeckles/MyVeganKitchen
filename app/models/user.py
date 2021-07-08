@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      "blogs": [b.to_dict() for b in self.blogs],
-      "recipes": [r.to_dict() for r in self.recipes],
-      'mealplans':[m.to_dict() for m in self.mealplans]
+      # "blogs": [b.to_dict() for b in self.blogs],
+      # "recipes": [r.to_dict() for r in self.recipes],
+      # 'mealplans':[m.to_dict() for m in self.mealplans]
     }

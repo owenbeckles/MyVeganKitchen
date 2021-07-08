@@ -6,13 +6,22 @@ import App from './App';
 import configureStore from './store';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeContext, useThemeContext } from './context/ThemeContext'
+import { createTheme } from '@material-ui/core/styles';
 
 const store = configureStore();
+
+const button = createTheme({
+  palette: {
+    primary: {
+      main: '#388e3c'
+    }
+  }
+})
 
 const Root = () => {
   
   return (
-    <ThemeProvider>
+    <ThemeProvider button={button}>
       <App />
     </ThemeProvider>
   )

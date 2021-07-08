@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required
 from app.models import db, User, Comment, Recipe
+# from app.models.blog import my_posts
 
 user_routes = Blueprint('users', __name__)
 
@@ -29,13 +30,14 @@ def my_kitchen():
             blogpost: {current_user.blogposts, Blogpost},
             mealplan: {current_user.mealplans, MealPlan}
             }
-        id = int(data['id'])
+        itemId = int(data['itemId'])
+        type = data['type']
         assoc, model = dict_type[type]
-        assoc.append(model.query.get(id))
+        assoc.append(model.query.get(itemId))
         db.session.commit()
         return {}
     elif request.method == 'DELETE':
-        assoc.remove(model.query.get(id))
+        assoc.remove(model.query.get(itemId))
         db.session.commit()
         return {}
 

@@ -5,8 +5,8 @@ mealplans_routes = Blueprint('mealplans', __name__)
 
 @mealplans_routes.route('/plans')
 def all_mealplans():
-    all_plans = MealPlan.query.filter_by(MealPlan).order_by(MealPlan.id.desc()).all()
-    return plan.to_dict()
+    all_plans = MealPlan.query.order_by(MealPlan.id.desc()).all()
+    return {'plan': [plan.to_dict() for plan in all_plans]}
 
 
 @mealplans_routes.route('/plans/<int:id>')

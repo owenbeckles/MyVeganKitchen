@@ -15,3 +15,12 @@ class MealPlan(db.Model):
     description = db.Column(db.Text, nullable = False, unique = True)
 
     users = db.relationship('User', secondary=my_meals, backref='mealplans')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "price": self.price,
+            "overview": self.overview,
+            "description": self.description
+        }

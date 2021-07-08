@@ -1,9 +1,17 @@
 import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
+import recipesReducer from './recipe';
+import mealPlanReducer from './mealplan';
+import blogPostReducer from './blogpost';
+import commentsReducer from './comment';
 
 const rootReducer = combineReducers({
     session,
+    recipes: recipesReducer,
+    meals: mealPlanReducer,
+    posts: blogPostReducer,
+    comments: commentsReducer
 });
 
 

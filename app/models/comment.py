@@ -13,3 +13,9 @@ class Comment(db.Model):
 
     comments = db.relationship("User", back_populates="person")
     usercomments = db.relationship("Recipe", back_populates="recipecomment")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "comment": self.comment,
+        }

@@ -18,3 +18,14 @@ class Recipe(db.Model):
     recipecomment = db.relationship("Comment", back_populates="usercomments")
 
     users = db.relationship('User', secondary=my_recipes, backref='recipes')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "title": self.title,
+            "type": self.type,
+            "ingredients": self.ingredients,
+            "instructions": self.instructions,
+            "description": self.description
+        }
