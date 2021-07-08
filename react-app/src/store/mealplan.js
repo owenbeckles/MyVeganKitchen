@@ -38,7 +38,7 @@ export const getAllPlans = () => async (dispatch) => {
     if (data.errors) {
         return data;
     }
-    dispatch(allPlans(data));
+    dispatch(allPlans(data.plan));
 }
 
 const initialState = {};

@@ -5,8 +5,8 @@ blogs_routes = Blueprint('blog', __name__)
 
 @blogs_routes.route('/blog')
 def all_blogs():
-    all_posts = Blog.query.filter_by(Blog).order_by(Blog.id.desc()).all()
-    return all_posts.to_dict()
+    all_posts = Blog.query.order_by(Blog.id.desc()).all()
+    return {'post': [post.to_dict() for post in all_posts]}
 
 
 @blogs_routes.route('/blog/<int:id>')

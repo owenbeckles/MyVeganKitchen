@@ -38,7 +38,7 @@ export const getAllBlogPosts = () => async (dispatch) => {
     if (data.errors) {
         return data;
     }
-    dispatch(allPosts(data));
+    dispatch(allPosts(data.post));
 }
 
 const initialState = {};

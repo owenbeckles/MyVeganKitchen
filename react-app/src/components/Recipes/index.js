@@ -24,10 +24,10 @@ const Recipes = () => {
     if(!recipes) return null;
 
     return (
-        <div>
+        <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>Hello, this is a test.</mark></div>
         <i class="fas fa-house-user"></i>
-        <div>
+        <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             {allRecipes.map(recipe => {
                 return (
                     <a onClick={(e) => {
