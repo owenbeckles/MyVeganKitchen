@@ -4,10 +4,10 @@ const ALL_RECIPES = 'recipe/ALL_RECIPES';
 
 
 // thunks
-const getRecipe = (recipe) => {
+const getRecipe = (payload) => {
     return {
         type: GET_RECIPE,
-        payload: recipe,
+        payload,
     }
 }
 
@@ -39,6 +39,7 @@ export const getAllRecipes = () => async (dispatch) => {
         return data;
     }
     dispatch(allRecipes(data));
+    return data;
 }
 
 const initialState = {};

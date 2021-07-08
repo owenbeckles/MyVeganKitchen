@@ -16,16 +16,15 @@ const removeItem = (item) => {
     }
 }
 
-export const addUserItems = (recipeId, mealPlanId, blogId, userId) => async (dispatch) => {
+export const addUserItems = (itemId, type) => async (dispatch) => {
     const res = await fetch(`/api/users/mykitchen`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            userId,
-            itemId: 0,
-            flag
+            itemId,
+            type
         })
     })
 }

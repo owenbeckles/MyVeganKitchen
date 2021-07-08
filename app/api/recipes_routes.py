@@ -6,7 +6,7 @@ recipes_routes = Blueprint('recipes', __name__)
 @recipes_routes.route('/recipes')
 def recipes():
     all_recipes = Recipe.query.filter_by(Recipe).order_by(Recipe.id.desc()).all()
-    return all_recipe.to_dict()
+    return all_recipes.to_dict()
 
 
 @recipes_routes.route('/recipes/<int:id>')

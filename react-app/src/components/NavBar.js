@@ -53,6 +53,7 @@ const NavBar = () => {
             <LogoutButton />
           </li>
         </ul>
+        <i class="fas fa-house-user"></i>
         <Switch
           color="primary"
           onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))}

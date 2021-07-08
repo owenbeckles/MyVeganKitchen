@@ -14,3 +14,12 @@ class Blog(db.Model):
     description = db.Column(db.Text, nullable = False, unique = True)
 
     users = db.relationship('User', secondary=my_posts, backref='blogs')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "title": self.title,
+            "content": self.content,
+            "description": self.description
+        }

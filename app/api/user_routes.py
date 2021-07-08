@@ -30,16 +30,14 @@ def my_kitchen():
             blogpost: {current_user.blogposts, Blogpost},
             mealplan: {current_user.mealplans, MealPlan}
             }
-        id = int(data['id'])
-        flag = int(data['flag'])
-        # if flag == 0:
-        #     recipe = Recipe
+        itemId = int(data['itemId'])
+        type = data['type']
         assoc, model = dict_type[type]
-        assoc.append(model.query.get(id))
+        assoc.append(model.query.get(itemId))
         db.session.commit()
         return {}
     elif request.method == 'DELETE':
-        assoc.remove(model.query.get(id))
+        assoc.remove(model.query.get(itemId))
         db.session.commit()
         return {}
 
