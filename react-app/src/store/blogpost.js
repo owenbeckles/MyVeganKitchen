@@ -31,7 +31,7 @@ export const getIndividualBlogPost = (id) => async (dispatch) => {
 }
 
 export const getAllBlogPosts = () => async (dispatch) => {
-    const res = await fetch('/api/blog', {
+    const res = await fetch('/api/blog/', {
         method: 'GET',
     });
     const data = await res.json();

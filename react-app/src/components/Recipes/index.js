@@ -25,7 +25,6 @@ const Recipes = () => {
 
     return (
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-        <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>Hello, this is a test.</mark></div>
         <i class="fas fa-house-user"></i>
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             {allRecipes.map(recipe => {

@@ -3,7 +3,7 @@ from app.models import db, MealPlan
 
 mealplans_routes = Blueprint('mealplans', __name__)
 
-@mealplans_routes.route('/plans')
+@mealplans_routes.route('/')
 def all_mealplans():
     all_plans = MealPlan.query.order_by(MealPlan.id.desc()).all()
     return {'plan': [plan.to_dict() for plan in all_plans]}

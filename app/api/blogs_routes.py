@@ -3,7 +3,7 @@ from app.models import db, Blog
 
 blogs_routes = Blueprint('blog', __name__)
 
-@blogs_routes.route('/blog')
+@blogs_routes.route('/')
 def all_blogs():
     all_posts = Blog.query.order_by(Blog.id.desc()).all()
     return {'post': [post.to_dict() for post in all_posts]}

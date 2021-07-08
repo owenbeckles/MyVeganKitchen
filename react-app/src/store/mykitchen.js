@@ -26,7 +26,16 @@ export const addUserItems = (itemId, type) => async (dispatch) => {
             itemId,
             type
         })
-    })
+    });
+    const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(addItem(data))
+}
+
+export const deleteUserItems = (itemId, type) => async (dispatch) => {
+    const res = await fetch()
 }
 
 export default function myKitchenReducer(state = {}, action) {

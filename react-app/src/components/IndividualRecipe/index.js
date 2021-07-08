@@ -24,7 +24,13 @@ const IndividualRecipe = ({recipe}) => {
             {/* <div>Hi</div>
             <div className='button'>Button</div> */}
             <div>
-                <h1 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.description}</h1>
+                <h1 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.title}</h1>
+            </div>
+            <div>
+                <h2 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>{recipe.type}</mark></h2>
+            </div>
+            <div>
+                <h3 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
             </div>
         </div>
     )
