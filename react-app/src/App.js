@@ -14,6 +14,7 @@ import Plans from './components/Plans';
 import Blog from './components/Blog';
 import Homepage from './components/Homepage'
 import { useThemeContext } from './context/ThemeContext'
+import "tailwindcss/tailwind.css"
 
 
 
