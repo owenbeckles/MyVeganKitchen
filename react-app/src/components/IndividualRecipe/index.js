@@ -88,14 +88,31 @@ const IndividualRecipe = ({recipe}) => {
                 <h1 className='recipe-title' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.title}</h1>
                 {}
             </div>
-            <div>
-                <h5 className='recipe-type' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>{recipe.type}</mark></h5>
-            </div>
+            <div class="rounded h-full flex justify-center items-center">
+  <div class="rounded bg-white shadow-md h-48 w-48 p-6 flex flex-col justify-around">
+    <div>
+      <p class="text-base text-gray-600">{recipe.type}</p>
+    </div>
+    <div>
+      <p class="text-2xl text-gray-700 font-bold">Ingredients</p>
+    </div>
+    <div class="text-sm">
+      <p class="text-green-500 mb-1 flex item-center">
+        <i class="material-icons"></i> 
+      </p>
+      <p class="text-gray-600"></p>
+    </div>
+  </div>
+</div>
             <div>
                 <img src={image} style={{width:'300px', height:'300px'}}></img>
             </div>
-            <div>
-                <h4 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.ingredients}</h4>
+            <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+                {instructions.map(instruction => {
+                    return (
+                        <li>{instruction}</li>
+                    )
+                })}
             </div>
             <div>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
