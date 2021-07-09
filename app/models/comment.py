@@ -11,8 +11,8 @@ class Comment(db.Model):
     recipeId = db.Column(db.Integer, db.ForeignKey("recipes.id"))
     created_at = db.Column(db.DateTime, default=datetime.now())
 
-    comments = db.relationship("User", back_populates="person")
-    usercomments = db.relationship("Recipe", back_populates="recipecomment")
+    person = db.relationship("User", back_populates="comments", uselist=False)
+    recipe = db.relationship("Recipe", back_populates="comments", uselist=False)
 
     def to_dict(self):
         return {

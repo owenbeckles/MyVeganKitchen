@@ -4,10 +4,10 @@ const EDIT_COMMENT = 'session/EDIT_COMMENT';
 const DELETE_COMMENT = 'session/DELETE_COMMENT';
 
 // thunks 
-const postComment = (comment) => {
+const postComment = (payload) => {
     return {
         type: POST_COMMENT,
-        payload: comment,
+        payload,
     }
 }
 
@@ -26,7 +26,7 @@ const deleteComment = (comment) => {
 }
 
 export const postComments = (comment, id, recipeId, userId) => async (dispatch) => {
-    const res = await fetch(`/api/recipes/${recipeId}`, {
+    const res = await fetch(`/api/users/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -39,6 +39,7 @@ export const postComments = (comment, id, recipeId, userId) => async (dispatch) 
         })
     });
     const data = await res.json();
+    debugger
     if (data.errors) {
         return data;
     }

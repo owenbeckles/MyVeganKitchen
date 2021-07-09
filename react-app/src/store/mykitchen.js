@@ -31,16 +31,31 @@ export const addUserItems = (itemId, type) => async (dispatch) => {
     if (data.errors) {
         return data;
     }
-    dispatch(addItem(data))
+    dispatch(addItem(data));
 }
 
 export const deleteUserItems = (itemId, type) => async (dispatch) => {
-    const res = await fetch()
+    const res = await fetch(`/api/users/mykitchen`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            itemId,
+            type
+        })
+    });
+    const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(removeItem(data));
 }
 
 export default function myKitchenReducer(state = {}, action) {
     let newState;
     switch (action.type) {
         case ADD_ITEM:
+            
     }
 }

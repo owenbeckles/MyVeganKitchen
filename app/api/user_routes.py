@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, session
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, User, Comment, Recipe
 # from app.models.blog import my_posts
 
@@ -42,16 +42,19 @@ def my_kitchen():
         return {}
 
 # Comments
-@user_routes.route('/recipes/<int:id>', methods = ['POST', 'PUT', 'DELETE'])
+@user_routes.route('/', methods = ['POST', 'PUT', 'DELETE'])
 @login_required
-def managing_comments(id):
+def managing_comments():
     if request.method == 'POST':
-        data = request.json
+        data = request.json['comment']
+        print(data)
         newComment = Comment()
-        newComment.userId = request.json['userId']
-        newComment.recipeId = request.json['recipeId']
-        newComment.comment = data
+        newComment.userId = current_user.id
+        newComment.recipeId = data['recipeId']
+        newComment.comment = data['comment']
         db.session.add(newComment)
+        db.session.commit()
+        return newComment.to_dict()
     elif request.method == 'PUT':
         comment = Comment.query.get(request.json['id'])
         comment.comment = request.json['comment']   
@@ -61,13 +64,13 @@ def managing_comments(id):
     db.session.commit()
 
 # Settings
-@user_routes.route('/settings/<int:id>')
+@user_routes.route('/<int:id>')
 @login_required
 def settings_page(id):
     settings = User.query.get(id)
     return settings.to_dict()
 
-@user_routes.route('/settings/<int:id>/edit', methods = ['PUT'])
+@user_routes.route('/<int:id>/edit', methods = ['PUT'])
 @login_required
 def settings_edit(id):
     id = request.json['id']

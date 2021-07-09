@@ -28,6 +28,11 @@ const NavBar = () => {
             My Vegan Kitchen
           </NavLink>
         </div>
+        <div>
+          <NavLink to='/recipes' exact={true} style={{color: themeChoice.title}}>
+            Recipes
+          </NavLink>
+        </div>
         <ul>
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
