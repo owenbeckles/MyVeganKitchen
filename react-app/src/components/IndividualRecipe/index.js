@@ -6,6 +6,18 @@ import { getIndividualRecipe } from '../../store/recipe';
 import { postComments } from '../../store/comment';
 import { ThemeContext } from '../../context/ThemeContext';
 import { useParams } from 'react-router-dom';
+import veganquesadillas from '../../images/1.png';
+import springrolls from '../../images/2.png';
+import oystermushrooms from '../../images/3.png';
+import frenchtoast from '../../images/4.png';
+import veganlox from '../../images/5.png';
+import tofuscramble from '../../images/6.png';
+import avocadotoast from '../../images/7.png';
+import generaltso from '../../images/8.png';
+import walnutmeat from '../../images/9.png';
+import eggrolls from '../../images/10.png';
+import wontons from '../../images/11.png';
+import nachos from '../../images/12.png';
 
 const IndividualRecipe = ({recipe}) => {
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
@@ -23,29 +35,29 @@ const IndividualRecipe = ({recipe}) => {
     console.log(instructions);
 
     if (recipe.title === 'Vegan Quesadillas') {
-        image = 1
+        image = veganquesadillas
     } else if (recipe.title === 'Spring Rolls') {
-        image = 2
+        image = springrolls
     } else if (recipe.title === 'Air Fried BBQ Oyster Mushrooms') {
-       image = 3 
+       image = oystermushrooms 
     } else if (recipe.title === 'Homemade French Toast') {
-        image = 4
+        image = frenchtoast
     } else if (recipe.title === 'Vegan Lox') {
-        image = 5
+        image = veganlox
     } else if (recipe.title === 'Tofu Scramble') {
-        image = 6
+        image = tofuscramble
     } else if (recipe.title === 'Avocado Toast') {
-        image = 7
+        image = avocadotoast
     } else if (recipe.title === 'General Tso Portobello Mushrooms') {
-        image = 8
+        image = generaltso
     } else if (recipe.title === 'Cheesy Walnut Meat Gnocchi') {
-        image = 9
+        image = walnutmeat
     } else if (recipe.title === 'Homemade Vegetable Egg Rolls') {
-        image = 10
+        image = eggrolls
     } else if (recipe.title === 'Avocado Wontons') {
-        image = 11
+        image = wontons
     } else {
-        image = 12
+        image = nachos
     }
 
     useEffect(() => {
@@ -80,7 +92,7 @@ const IndividualRecipe = ({recipe}) => {
                 <h5 className='recipe-type' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>{recipe.type}</mark></h5>
             </div>
             <div>
-                <img href={`${image}.png`}></img>
+                <img src={image} style={{width:'300px', height:'300px'}}></img>
             </div>
             <div>
                 <h4 style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.ingredients}</h4>
