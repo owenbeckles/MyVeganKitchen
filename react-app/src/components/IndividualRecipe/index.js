@@ -19,14 +19,16 @@ import eggrolls from '../../images/10.png';
 import wontons from '../../images/11.png';
 import nachos from '../../images/12.png';
 
-const IndividualRecipe = ({recipe}) => {
+const IndividualRecipe = ({recipe, setIsLoading}) => {
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const [comment, setComment] = useState('');
+    
     const dispatch = useDispatch();
     const { id } = useParams();
     const recipes = useSelector((state) => state.recipes[id]);
     const [userId, setUserId] = useState(null);
     const [recipeId, setRecipeId] = useState(null);
+    const [comments, setComments] = useState(null);
     const user = useSelector((state) => state.session.user ? state.session.user : null);
     const history = useHistory();
     const themeChoice = theme === 'light' ? light : dark;
@@ -73,9 +75,11 @@ const IndividualRecipe = ({recipe}) => {
     const handleClick = async(e) => {
         e.preventDefault()
         const data = {comment, recipeId: recipe.id}
-        debugger
         console.log('This is data', data)
-        await dispatch(postComments(data));
+        const { comments: cs } = await dispatch(postComments(data));
+        setComments(cs);
+        setIsLoading((prev) => !prev);
+        setComment('')
     }
 
     
@@ -116,6 +120,17 @@ const IndividualRecipe = ({recipe}) => {
             </div>
             <div>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
+            </div>
+            <div>
+                {comments ? comments.map(({comment}) => {
+                    return (
+                        <div>{comment}</div>
+                    )
+                }) : recipe.comment?.map(({comment}) => {
+                    return (
+                        <div>{comment}</div>
+                    )
+                })}
             </div>
             <div>
                 <form>

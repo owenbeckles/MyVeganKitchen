@@ -14,12 +14,16 @@ const Recipes = () => {
     const recipes = useSelector((state) => state.recipes);
     const allRecipes = Object.values(recipes);
     const [activeRecipe, setactiveRecipe] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [loaded, setLoaded] = useState(false);
+    console.log(recipes)
     const themeChoice = theme === 'light' ? light : dark;
-
     useEffect(() => {
-        dispatch(getAllRecipes());
-    }, [])
+        (async() => { 
+            await dispatch(getAllRecipes());
+            setLoaded(!loaded);
+        })();
+    }, [isLoading])
 
     if(!recipes) return null;
 
@@ -27,16 +31,16 @@ const Recipes = () => {
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
         <i class="fas fa-house-user"></i>
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-            {allRecipes.map(recipe => {
+            {Object.values(recipes).map((recipe, i) => {
                 return (
-                    <a onClick={(e) => {
+                    <a style={{border: '1px solid red'}} key={i} onClick={(e) => {
                         e.preventDefault()
                         setactiveRecipe(recipe)
                     }}>{recipe.title}</a>
                 )
             })}
         </div>
-            {activeRecipe && <IndividualRecipe recipe={activeRecipe}/>}
+            {activeRecipe && <IndividualRecipe recipe={activeRecipe} setIsLoading={setIsLoading}/>}
         </div>
     )
 }
