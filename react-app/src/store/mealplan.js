@@ -31,7 +31,7 @@ export const getIndividualMealPlan = (id) => async (dispatch) => {
 }
 
 export const getAllPlans = () => async (dispatch) => {
-    const res = await fetch('/api/plans', {
+    const res = await fetch('/api/plans/', {
         method: 'GET',
     });
     const data = await res.json();

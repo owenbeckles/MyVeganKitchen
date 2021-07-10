@@ -15,7 +15,7 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable = False, unique = True)
     description = db.Column(db.Text, nullable = False, unique = True)
 
-    recipecomment = db.relationship("Comment", back_populates="usercomments")
+    comments = db.relationship("Comment", back_populates="recipe")
 
     users = db.relationship('User', secondary=my_recipes, backref='recipes')
 
@@ -27,5 +27,6 @@ class Recipe(db.Model):
             "type": self.type,
             "ingredients": self.ingredients,
             "instructions": self.instructions,
-            "description": self.description
+            "description": self.description,
+            "comment": [comment.to_dict() for comment in self.comments]
         }

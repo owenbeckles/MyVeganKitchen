@@ -5,6 +5,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { getAllRecipes } from '../../store/recipe';
 import { useHistory } from 'react-router-dom';
 import IndividualRecipe from '../IndividualRecipe';
+import TabsRender from '../Tabs';
 
 
 const Recipes = () => {
@@ -14,30 +15,34 @@ const Recipes = () => {
     const recipes = useSelector((state) => state.recipes);
     const allRecipes = Object.values(recipes);
     const [activeRecipe, setactiveRecipe] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [loaded, setLoaded] = useState(false);
+    console.log(recipes)
     const themeChoice = theme === 'light' ? light : dark;
-
     useEffect(() => {
-        dispatch(getAllRecipes());
-    }, [])
+        (async() => { 
+            await dispatch(getAllRecipes());
+            setLoaded(!loaded);
+        })();
+    }, [isLoading])
 
     if(!recipes) return null;
 
     return (
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-        <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}><mark>Hello, this is a test.</mark></div>
+            <TabsRender />
         <i class="fas fa-house-user"></i>
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-            {allRecipes.map(recipe => {
+            {Object.values(recipes).map((recipe, i) => {
                 return (
-                    <a onClick={(e) => {
+                    <a style={{border: '1px solid red'}} key={i} onClick={(e) => {
                         e.preventDefault()
                         setactiveRecipe(recipe)
                     }}>{recipe.title}</a>
                 )
             })}
         </div>
-            {activeRecipe && <IndividualRecipe recipe={activeRecipe}/>}
+            {activeRecipe && <IndividualRecipe recipe={activeRecipe} setIsLoading={setIsLoading}/>}
         </div>
     )
 }
