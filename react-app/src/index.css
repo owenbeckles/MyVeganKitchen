@@ -55,3 +55,8 @@
     display: flex;
     justify-content: center;
 }
+
+.user-login {
+    display: flex;
+    justify-content: space-between;
+}

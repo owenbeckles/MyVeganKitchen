@@ -10,6 +10,8 @@ import { light, dark } from '../data/theme'
 const NavBar = () => {
   const { setTheme, light, dark, theme } = useContext(ThemeContext);
   const [navbar, setNavbar] = useState('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach');
+  const [search, setSearch] = useState('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-peach rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-peach')
+  const [searchBar, setSearchBar] = useState('px-2 py-1 h-8 border border-solid  border-peach rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-peach')
 
   const themeChoice = theme === 'light' ? light : dark;
 
@@ -24,9 +26,13 @@ const NavBar = () => {
       if (themeChoice === light) {
         setTheme('dark');
         setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-avocado')
+        setSearchBar('px-2 py-1 h-8 border border-solid  border-black rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-gray-400')
+        setSearch('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-black rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-gray-400')
       } else {
         setTheme('light')
         setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach')
+        setSearchBar('px-2 py-1 h-8 border border-solid  border-peach rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-peach')
+        setSearch('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-peach rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-peach')
       }
     }
 
@@ -103,7 +109,7 @@ const NavBar = () => {
     //     </div>
     // </nav>
     <nav className={navbar}>
-  <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+  <div className="sticky container px-4 mx-auto flex flex-wrap items-center justify-between">
     <div className="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
       <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="#pablo">
         <NavLink to='/' exact={true}>My Vegan Kitchen</NavLink>
@@ -136,14 +142,19 @@ const NavBar = () => {
             <span className="ml-2">Meal Plans</span>
           </a>
         </li>
+        <li className="nav-item">
+          <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+            <span className="ml-2"><NavLink to='/mykitchen' exact={true}>My Kitchen</NavLink></span>
+          </a>
+        </li>
       </ul>
       <div className="relative flex w-full sm:w-7/12 md:w-5/12 px-4 flex-wrap items-stretch lg:ml-auto">
         <div className="flex">
-          <span className="font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-pink-600 rounded-full text-sm bg-pink-100 items-center rounded-r-none pl-2 py-1 text-pink-800 border-r-0 placeholder-pink-300">
+          <span className={search}>
             <i className="fas fa-search"></i>
           </span>
         </div>
-        <input type="text" className="px-2 py-1 h-8 border border-solid  border-pink-600 rounded-full text-sm leading-snug text-pink-700 bg-pink-100 shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-pink-300" placeholder="Search..." />
+        <input type="text" className={searchBar} placeholder="Search..." />
       </div>
       <i class="fas fa-sun"></i>
           <Switch
@@ -152,12 +163,14 @@ const NavBar = () => {
           onChange={handleChange}
           button={button} />
     </div>
-          <NavLink to="/login" exact={true} activeClassName="active">
+    <div className='user-login'>
+          <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75 pr-4 pl-1" to="/login" exact={true} activeClassName="active">
                Login
           </NavLink>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75" to="/sign-up" exact={true} activeClassName="active">
                Sign Up
           </NavLink>
+    </div>
   </div>
 </nav>
   );

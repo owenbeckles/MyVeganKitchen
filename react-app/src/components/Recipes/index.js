@@ -5,6 +5,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { getAllRecipes } from '../../store/recipe';
 import { useHistory } from 'react-router-dom';
 import IndividualRecipe from '../IndividualRecipe';
+import TabsRender from '../Tabs';
 
 
 const Recipes = () => {
@@ -29,6 +30,7 @@ const Recipes = () => {
 
     return (
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+            <TabsRender />
         <i class="fas fa-house-user"></i>
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             {Object.values(recipes).map((recipe, i) => {

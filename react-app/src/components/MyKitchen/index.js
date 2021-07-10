@@ -6,6 +6,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { light, dark, Theme } from '../../data/theme';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import TabsRender from '../Tabs';
 
 const Page = styled.body`
     background-color: black;
@@ -17,7 +18,7 @@ function MyKitchen () {
     rootEl.current.style= dark
     return (
         <div>
-        <body style={{backgroundColor: 'black'}}></body>
+            <TabsRender />
         </div>
     )
 }

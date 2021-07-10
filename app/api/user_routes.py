@@ -54,7 +54,7 @@ def managing_comments():
         newComment.comment = data['comment']
         db.session.add(newComment)
         db.session.commit()
-        return newComment.to_dict()
+        return {'comments': [c.to_dict() for c in newComment.recipe.comments], 'comment': newComment.to_dict()}
     elif request.method == 'PUT':
         comment = Comment.query.get(request.json['id'])
         comment.comment = request.json['comment']   
