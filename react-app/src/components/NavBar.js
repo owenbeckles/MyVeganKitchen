@@ -4,33 +4,40 @@ import LogoutButton from './auth/LogoutButton';
 import { ThemeContext } from '../context/ThemeContext';
 import Switch from '@material-ui/core/Switch';
 import { createTheme } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { login } from '../../src/store/session';
 import { green } from '@material-ui/core/colors';
 import { light, dark } from '../data/theme'
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const { setTheme, light, dark, theme } = useContext(ThemeContext);
   const [navbar, setNavbar] = useState('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach');
+  const [demo, setDemo] = useState('border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded');
   const [search, setSearch] = useState('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-peach rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-peach')
   const [searchBar, setSearchBar] = useState('px-2 py-1 h-8 border border-solid  border-peach rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-peach')
 
   const themeChoice = theme === 'light' ? light : dark;
 
-  
-    // if (themeChoice === light) {
-    //   setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach mb-3')
-    // } else {
-    //   setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-avocado mb-3')
-    // }
+  const demoUser = async(e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'))
+    if (data.errors) {
+      return 'Login Unsuccessful'
+    }
+  }
 
     const handleChange = () => {
       if (themeChoice === light) {
         setTheme('dark');
         setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-avocado')
+        setDemo('border-2 border-white px-4 text-white hover:text-avocado hover:bg-white rounded')
         setSearchBar('px-2 py-1 h-8 border border-solid  border-black rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-gray-400')
         setSearch('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-black rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-gray-400')
       } else {
         setTheme('light')
         setNavbar('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach')
+        setDemo('border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded')
         setSearchBar('px-2 py-1 h-8 border border-solid  border-peach rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-peach')
         setSearch('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-peach rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-peach')
       }
@@ -132,16 +139,16 @@ const NavBar = () => {
             <i className="fab fa-twitter text-lg leading-lg text-white opacity-75" /> <span className="ml-2"><NavLink to='/recipes' exact={true}>Recipes</NavLink></span>
           </a>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
             <span className="ml-2"><NavLink to='/blog' exact={true}>Blog</NavLink></span>
           </a>
         </li>
         <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-            <span className="ml-2">Meal Plans</span>
+            <span className="ml-2"><NavLink to='/plans' exact={true}>Meal Plans</NavLink></span>
           </a>
-        </li>
+        </li> */}
         <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
             <span className="ml-2"><NavLink to='/mykitchen' exact={true}>My Kitchen</NavLink></span>
@@ -170,6 +177,10 @@ const NavBar = () => {
           <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75" to="/sign-up" exact={true} activeClassName="active">
                Sign Up
           </NavLink>
+          <button className={demo} onClick={demoUser}>
+            <p>Demo</p>
+          </button>
+          <LogoutButton />
     </div>
   </div>
 </nav>

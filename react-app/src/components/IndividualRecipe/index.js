@@ -109,7 +109,8 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
   </div>
 </div>
             <div>
-                <img src={image} style={{width:'300px', height:'300px'}}></img>
+                <img src={image} class="float-right" style={{width:'300px', height:'300px'}}></img>
+                <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
             </div>
             <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
                 {instructions.map(instruction => {
@@ -118,9 +119,9 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
                     )
                 })}
             </div>
-            <div>
+            {/* <div>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
-            </div>
+            </div> */}
             <div>
                 {comments ? comments.map(({comment}) => {
                     return (
