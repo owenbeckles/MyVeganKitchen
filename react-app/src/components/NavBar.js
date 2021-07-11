@@ -4,13 +4,14 @@ import LogoutButton from './auth/LogoutButton';
 import { ThemeContext } from '../context/ThemeContext';
 import Switch from '@material-ui/core/Switch';
 import { createTheme } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../src/store/session';
 import { green } from '@material-ui/core/colors';
 import { light, dark } from '../data/theme'
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user)
   const { setTheme, light, dark, theme } = useContext(ThemeContext);
   const [navbar, setNavbar] = useState('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach');
   const [demo, setDemo] = useState('border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded');
@@ -134,11 +135,11 @@ const NavBar = () => {
             <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75" /> 
           </a>
         </li>
-        <li className="nav-item">
+        {user && <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" href="#pablo">
             <i className="fab fa-twitter text-lg leading-lg text-white opacity-75" /> <span className="ml-2"><NavLink to='/recipes' exact={true}>Recipes</NavLink></span>
           </a>
-        </li>
+        </li>}
         {/* <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
             <span className="ml-2"><NavLink to='/blog' exact={true}>Blog</NavLink></span>
@@ -149,11 +150,11 @@ const NavBar = () => {
             <span className="ml-2"><NavLink to='/plans' exact={true}>Meal Plans</NavLink></span>
           </a>
         </li> */}
-        <li className="nav-item">
+        {user && <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
             <span className="ml-2"><NavLink to='/mykitchen' exact={true}>My Kitchen</NavLink></span>
           </a>
-        </li>
+        </li>}
       </ul>
       <div className="relative flex w-full sm:w-7/12 md:w-5/12 px-4 flex-wrap items-stretch lg:ml-auto">
         <div className="flex">
@@ -163,26 +164,33 @@ const NavBar = () => {
         </div>
         <input type="text" className={searchBar} placeholder="Search..." />
       </div>
-      <i class="fas fa-sun"></i>
+      {theme === 'light' ? <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+</svg> : <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="black">
+  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+</svg>}
           <Switch
           color="primary"
           // onChange={(() => theme === 'light' ? setTheme('dark') : setTheme('light'))}
           onChange={handleChange}
           button={button} />
     </div>
+    
     <div className='user-login'>
-          <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75 pr-4 pl-1" to="/login" exact={true} activeClassName="active">
+          {!user && <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75 pr-4 pl-1" to="/login" exact={true} activeClassName="active">
                Login
-          </NavLink>
-          <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75" to="/sign-up" exact={true} activeClassName="active">
+          </NavLink>}
+          {/* <NavLink className="fab fa-twitter text-lg leading-lg text-white opacity-75" to="/sign-up" exact={true} activeClassName="active">
                Sign Up
-          </NavLink>
-          <button className={demo} onClick={demoUser}>
+          </NavLink> */}
+
+          {!user && <button className={demo} onClick={demoUser}>
             <p>Demo</p>
-          </button>
-          <LogoutButton />
+          </button>}
+          {user && <LogoutButton />}
     </div>
   </div>
+      
 </nav>
   );
 }

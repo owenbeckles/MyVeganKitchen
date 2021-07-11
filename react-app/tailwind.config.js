@@ -5,7 +5,10 @@ module.exports = {
       extend: {      
         colors: {
             'peach':'#F08E80',
-            'avocado': '#607466'
+            'avocado': '#607466',
+            'dark-bg': '#0D1117',
+            'light-bg': '#F9F5F1',
+            "grey-text": '#8B949E'
       }
     },
     variants: {},

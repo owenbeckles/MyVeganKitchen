@@ -122,7 +122,54 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
             {/* <div>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
             </div> */}
+
             <div>
+                {/* <form>
+                    <label>
+                        <textarea type='text' value={comment} placeholder='Comment...' onChange={(e) => setComment(e.target.value)}></textarea>
+                    </label>
+                </form> */}
+                <div>
+                    {/* <button onClick={handleClick}>Comment</button> */}
+                </div>
+                {/* <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+  Click me
+</button> */}
+<button className="text-emerald-500 bg-transparent border border-solid border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+      >
+  <i className="fas fa-heart"></i> Add to My Kitchen
+</button>
+            </div>
+            <div className={theme === 'light' ? "bg-light-bg shadow sm:rounded-lg" : "bg-dark-bg shadow sm:rounded-lg"}>
+      <div className="px-4 py-5 sm:p-6">
+        <h3 className={theme === 'light' ? "text-lg leading-6 font-medium text-gray-900" : "text-lg leading-6 font-medium text-gray-text"}>Leave a Comment</h3>
+        <div className="mt-2 max-w-xl text-sm text-gray-500">
+          <p><em>Like this recipe? Leave a comment and let us know why!</em></p>
+        </div>
+        <form className="mt-5 sm:flex sm:items-center">
+          <div className="w-full sm:max-w-xs">
+            <label htmlFor="email" className="sr-only">
+              Comment
+            </label>
+            <textarea
+              type="text"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}  
+              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              placeholder="Say something..."
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={handleClick}
+            className={theme === 'light' ? "mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-peach hover:bg-white hover:text-peach focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" : "mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-avocado hover:bg-white hover:text-avocado focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"}
+          >
+            Comment
+          </button>
+        </form>
+      </div>
+    </div>
+    <div>
                 {comments ? comments.map(({comment}) => {
                     return (
                         <div>{comment}</div>
@@ -132,23 +179,6 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
                         <div>{comment}</div>
                     )
                 })}
-            </div>
-            <div>
-                <form>
-                    <label>
-                        <textarea type='text' value={comment} placeholder='Comment...' onChange={(e) => setComment(e.target.value)}></textarea>
-                    </label>
-                </form>
-                <div>
-                    <button onClick={handleClick}>Comment</button>
-                </div>
-                {/* <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-  Click me
-</button> */}
-<button className="text-emerald-500 bg-transparent border border-solid border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >
-  <i className="fas fa-heart"></i> Add to My Kitchen
-</button>
             </div>
         </div>
     )

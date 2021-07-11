@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from '../context/ThemeContext';
+
 
 const Tabs = ({ color }) => {
   const [openTab, setOpenTab] = React.useState(1);
+  const { setTheme, light, dark, theme } = useContext(ThemeContext);
+
   return (
     <>
       <div className="flex flex-wrap">
         <div className="w-full">
           <ul
-            className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
+            className="flex mb-0 list-none flex-wrap pt-3 pb-4 m-12 flex-row"
             role="tablist"
           >
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
-                className={
+                className={theme === 'light' ?
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                    ? "text-white bg-peach"
+                    : "text-white bg-peach") : "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                    (openTab === 1
+                      ? "text-white bg-avocado"
+                      : "text-white bg-avocado")
                 }
                 onClick={e => {
                   e.preventDefault();
@@ -29,7 +36,7 @@ const Tabs = ({ color }) => {
                 My Recipes
               </a>
             </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            {/* <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -47,8 +54,8 @@ const Tabs = ({ color }) => {
               >
                  My Blogs
               </a>
-            </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            </li> */}
+            {/* <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -66,9 +73,9 @@ const Tabs = ({ color }) => {
               >
                  My Meal Plans
               </a>
-            </li>
+            </li> */}
           </ul>
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 mx-8 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
@@ -114,7 +121,7 @@ const Tabs = ({ color }) => {
 export default function TabsRender() {
   return (
     <>
-      return <Tabs color="blueGray" />;
+      <Tabs color="blueGray" />;
     </>
   );
 }
