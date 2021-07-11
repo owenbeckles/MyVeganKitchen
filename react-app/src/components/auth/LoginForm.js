@@ -102,7 +102,7 @@ const LoginForm = () => {
           </div>
           <div class="flex justify-between items-center mt-4">
             <button class={theme === 'light' ? "bg-peach hover:bg-white px-4 py-2 text-white hover:text-peach" : "bg-avocado hover:bg-white px-4 py-2 text-white hover:text-avocado"} type="submit">Login</button>
-            <a href="#" class="text-xs underline-none text-black">Don't have an account? <a class='text-blue-400 hover:text-blue-600"'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></a> </a>
+            <a href="#" class="text-xs underline-none text-black">Don't have an account? <a class={theme === 'light' ? 'text-blue-400 hover:text-peach' : 'text-blue-400 hover:text-avocado'}><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></a> </a>
           </div>
         </form>
   

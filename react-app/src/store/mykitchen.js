@@ -52,10 +52,14 @@ export const deleteUserItems = (itemId, type) => async (dispatch) => {
     dispatch(removeItem(data));
 }
 
-export default function myKitchenReducer(state = {}, action) {
+export default function myKitchenReducer(state = [], action) {
     let newState;
     switch (action.type) {
         case ADD_ITEM:
-            
+            newState = [...state];
+            newState.push(action.payload);
+            return newState;
+        default:
+            return state;
     }
 }

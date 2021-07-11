@@ -132,7 +132,7 @@ const SignUpForm = () => {
   <div>
     <p class="mt-4 text-gray-500 text-sm">Have an account? 
       <a href="#"
-         class={theme === 'light' ? "no-underline text-teal-500 hover:text-peach" : "no-underline text-teal-500 hover:text-avocado"}> <NavLink to='/login' exact={true}>Log in</NavLink>
+         class={theme === 'light' ? "no-underline text-blue-400 hover:text-peach" : "no-underline text-blue-400 hover:text-avocado"}> <NavLink to='/login' exact={true}>Log in</NavLink>
       </a>
     </p>
   </div>

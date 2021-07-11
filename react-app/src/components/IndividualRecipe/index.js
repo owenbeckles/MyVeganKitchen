@@ -88,13 +88,27 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             {/* <div>Hi</div>
             <div className='button'>Button</div> */}
-            <div>
+            <div class='mt-8'>
                 <h1 className='recipe-title' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.title}</h1>
                 {}
             </div>
-            <div class="rounded h-full flex justify-center items-center">
-  <div class="rounded bg-white shadow-md h-48 w-48 p-6 flex flex-col justify-around">
-    <div>
+            <div class='flex justify-center pt-4'>
+            <button className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"} type="button">Add to My Kitchen</button>
+            </div>
+            <div class='flex justify-center my-16'>
+            <img src={image} style={{width:'300px', height:'300px'}}></img>
+            </div>
+            <div class="rounded h-full flex justify-start items-center float-left mx-8">
+  <div class={theme === 'light' ? "rounded bg-white shadow-md h-max w-96 p-6 flex flex-col" : "rounded bg-dark-bg border-style:solid border-gray-50 shadow-md h-max w-96 p-6 flex flex-col"}>
+  <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+                {instructions.map(instruction => {
+                    return (
+                        <li>{instruction}</li>
+                    )
+                })}
+            </div>
+            
+    {/* <div>
       <p class="text-base text-gray-600">{recipe.type}</p>
     </div>
     <div>
@@ -105,20 +119,21 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         <i class="material-icons"></i> 
       </p>
       <p class="text-gray-600"></p>
-    </div>
+    </div> */}
   </div>
 </div>
-            <div>
-                <img src={image} class="float-right" style={{width:'300px', height:'300px'}}></img>
+<h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
+            {/* <div>
+                <img src={image} style={{width:'300px', height:'300px'}}></img>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
-            </div>
-            <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+            </div> */}
+            {/* <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
                 {instructions.map(instruction => {
                     return (
                         <li>{instruction}</li>
                     )
                 })}
-            </div>
+            </div> */}
             {/* <div>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
             </div> */}
@@ -135,15 +150,12 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
                 {/* <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
   Click me
 </button> */}
-<button className="text-emerald-500 bg-transparent border border-solid border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >
-  <i className="fas fa-heart"></i> Add to My Kitchen
-</button>
+
             </div>
-            <div className={theme === 'light' ? "bg-light-bg shadow sm:rounded-lg" : "bg-dark-bg shadow sm:rounded-lg"}>
+            <div className={theme === 'light' ? "bg-light-bg sm:rounded-lg" : "bg-dark-bg sm:rounded-lg"}>
       <div className="px-4 py-5 sm:p-6">
         <h3 className={theme === 'light' ? "text-lg leading-6 font-medium text-gray-900" : "text-lg leading-6 font-medium text-gray-text"}>Leave a Comment</h3>
-        <div className="mt-2 max-w-xl text-sm text-gray-500">
+        <div className="mt-2 max-w-xl text-sm text-gray-500 flex justify-center">
           <p><em>Like this recipe? Leave a comment and let us know why!</em></p>
         </div>
         <form className="mt-5 sm:flex sm:items-center">

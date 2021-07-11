@@ -31,13 +31,14 @@ const Recipes = () => {
 
 
     return (
-        <div className='flex flex-col' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+        <div className='flex flex-col-reverse' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             <i class="fas fa-house-user"></i>
-        <div className='flex flex-col justify-between pt-5 pb-16 pl-16' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+        <div className='flex flex-col justify-between pt-5 pb-16 pl-16 mt-16' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
             {Object.values(recipes).map((recipe, i) => {
                 return (
                     <a className={theme === 'light' ? 'hover:text-peach pb-16' : 'hover:text-avocado pb-16'} key={i} onClick={(e) => {
                         e.preventDefault()
+                        window.scrollTo(0,0)
                         setactiveRecipe(recipe)
                     }}>{recipe.title}</a>
                 )

@@ -63,9 +63,9 @@ function App() {
         <ProtectedRoute path="/mykitchen" exact={true}>
             <MyKitchen />
         </ProtectedRoute>
-        <Route path="/recipes" exact={true}>
+        <ProtectedRoute path="/recipes" exact={true}>
             <Recipes />
-        </Route>
+        </ProtectedRoute>
         <Route path="/plans" exact={true}>
             <Plans />
         </Route>
