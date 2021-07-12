@@ -13,6 +13,7 @@ import Recipes from './components/Recipes';
 import Plans from './components/Plans';
 import Blog from './components/Blog';
 import Homepage from './components/Homepage'
+import UserProfile from './components/UserProfile';
 import IndividualRecipe from './components/IndividualRecipe';
 import { useThemeContext } from './context/ThemeContext'
 import "tailwindcss/tailwind.css"
@@ -78,6 +79,9 @@ function App() {
         <Route path="/" exact={true}>
             <Homepage />
         </Route>
+        <ProtectedRoute path='/settings'>
+            <UserProfile />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

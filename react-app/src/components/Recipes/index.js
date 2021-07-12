@@ -40,9 +40,10 @@ const Recipes = () => {
                         e.preventDefault()
                         window.scrollTo(0,0)
                         setactiveRecipe(recipe)
-                    }}>{recipe.title}</a>
+                    }}>{recipe.title}        <a class='text-xs'><em>{recipe.type}</em></a></a>
                 )
             })}
+            
         </div>
             {activeRecipe && <IndividualRecipe recipe={activeRecipe} setIsLoading={setIsLoading}/>}
         </div>

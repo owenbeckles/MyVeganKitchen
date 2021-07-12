@@ -16,6 +16,11 @@ function MyKitchen () {
     const { setTheme, light, dark, theme, rootEl } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
     rootEl.current.style= dark
+
+    // useEffect(() => {
+    //     dispatch(addUserItems())
+    // })
+
     return (
         <div>
             <TabsRender />

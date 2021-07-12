@@ -67,7 +67,7 @@ export const editComments = (comment, id, recipeId, userId) => async (dispatch) 
 }
 
 export const deleteComments = (comment, id, recipeId, userId) => async (dispatch) => {
-    const res = await fetch(`/api/recipes/${recipeId}`, {
+    const res = await fetch(`/api/users/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getIndividualRecipe } from '../../store/recipe';
-import { postComments } from '../../store/comment';
+import { postComments, deleteComments } from '../../store/comment';
 import { ThemeContext } from '../../context/ThemeContext';
+import { addUserItems } from '../../store/mykitchen';
 import { useParams } from 'react-router-dom';
 import veganquesadillas from '../../images/1.png';
 import springrolls from '../../images/2.png';
@@ -72,6 +73,12 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         dispatch(getIndividualRecipe());
     }, [])
 
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        const data = {title: recipe.title, description: recipe.description}
+        await dispatch(addUserItems(data))
+    }
+
     const handleClick = async(e) => {
         e.preventDefault()
         const data = {comment, recipeId: recipe.id}
@@ -82,18 +89,27 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         setComment('')
     }
 
+    const deleteClick = async(e) => {
+        e.preventDefault();
+        const data = {
+            comment
+        }
+        await dispatch(deleteComments(data));
+    }
+
     
 
     return (
         <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-            {/* <div>Hi</div>
-            <div className='button'>Button</div> */}
             <div class='mt-8'>
                 <h1 className='recipe-title' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.title}</h1>
                 {}
             </div>
+            <div class='flex justify-center mt-2'>
+                <a class={theme === 'light' ? 'text-xs outline-black p-1' : 'text-xs outline-white p-1'}>{recipe.type}</a>
+            </div>
             <div class='flex justify-center pt-4'>
-            <button className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"} type="button">Add to My Kitchen</button>
+            <button onClick={handleSubmit} className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150"} type="button">Add to My Kitchen</button>
             </div>
             <div class='flex justify-center my-16'>
             <img src={image} style={{width:'300px', height:'300px'}}></img>
@@ -107,22 +123,9 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
                     )
                 })}
             </div>
-            
-    {/* <div>
-      <p class="text-base text-gray-600">{recipe.type}</p>
-    </div>
-    <div>
-      <p class="text-2xl text-gray-700 font-bold">Ingredients</p>
-    </div>
-    <div class="text-sm">
-      <p class="text-green-500 mb-1 flex item-center">
-        <i class="material-icons"></i> 
-      </p>
-      <p class="text-gray-600"></p>
-    </div> */}
   </div>
 </div>
-<h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
+<h3 className='recipe-instructions mr-16' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
             {/* <div>
                 <img src={image} style={{width:'300px', height:'300px'}}></img>
                 <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
@@ -155,7 +158,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
             <div className={theme === 'light' ? "bg-light-bg sm:rounded-lg" : "bg-dark-bg sm:rounded-lg"}>
       <div className="px-4 py-5 sm:p-6">
         <h3 className={theme === 'light' ? "text-lg leading-6 font-medium text-gray-900" : "text-lg leading-6 font-medium text-gray-text"}>Leave a Comment</h3>
-        <div className="mt-2 max-w-xl text-sm text-gray-500 flex justify-center">
+        <div className="mt-2 max-w-xl text-sm text-gray-500">
           <p><em>Like this recipe? Leave a comment and let us know why!</em></p>
         </div>
         <form className="mt-5 sm:flex sm:items-center">
@@ -181,14 +184,16 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         </form>
       </div>
     </div>
-    <div>
+    <div class='ml-96 pl-16'>
                 {comments ? comments.map(({comment}) => {
                     return (
                         <div>{comment}</div>
                     )
                 }) : recipe.comment?.map(({comment}) => {
                     return (
-                        <div>{comment}</div>
+                        <div>{comment}
+                        <div><button onClick={deleteClick}>Delete</button></div>
+                        </div>
                     )
                 })}
             </div>

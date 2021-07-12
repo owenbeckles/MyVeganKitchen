@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const USER_SETTINGS = "session/USER_SETTINGS";
 
 const setUser = (user) => ({
     type: SET_USER,
@@ -10,6 +11,13 @@ const setUser = (user) => ({
 const removeUser = () => ({
     type: REMOVE_USER,
 })
+
+const userSettings = (user) => {
+  return {
+    type: USER_SETTINGS,
+    payload: user
+  }
+}
 
 const initialState = { user: null };
 
@@ -80,12 +88,36 @@ export const authenticate = () => async (dispatch) => {
     return {};
   }
 
+  export const editUserSettings = (username, email) => async (dispatch) => {
+    const res = await fetch('/api/auth/settings', {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        email,
+      })
+    });
+    const data = await res.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(userSettings(data))
+  }
+
 export default function reducer(state=initialState, action) {
+  let newState;
     switch (action.type) {
         case SET_USER:
             return {user: action.payload}
         case REMOVE_USER:
             return {user: null}
+        case USER_SETTINGS:
+          newState = {...state}
+          newState.user.username = action.payload.username
+          newState.user.email = action.payload.email
+          return newState;
         default:
             return state;
     }
