@@ -30,6 +30,7 @@ const Homepage = () => {
 
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const recipes = useSelector((state) => state.recipes);
+    const user = useSelector((state) => state.session.user)
 
     const themeChoice = theme === 'light' ? light : dark;
 
@@ -78,16 +79,27 @@ const Homepage = () => {
     
     return (
         <div class={theme === 'light' ? 'bg-light-bg' : 'bg-dark-bg text-grey-text'}>
-            <div class='ml-52 pt-8 flex flex-col'>
-                <h1 class='text-4xl'>Welcome Back!</h1>
+            <div class='ml-48 pt-8 flex flex-col'>
+                <h1 class='text-4xl'>Welcome Back, {user.username}!</h1>
+                <br></br>
+                <br></br>
+                <div class=''><h1 >Looking to share your knowledge on the newest superfood? <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><NavLink to='/create'>Create a new post.</NavLink></em></h1></div>
+                <br></br>
+                <br></br>
+                <div class=''><h1>Need a new go-to meal? Make sure to stay updated on our <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><NavLink to='/recipes'>latest recipes.</NavLink></em></h1></div>
+                <br></br>
+                <br></br>
+                <div class=''><h1>Trying to view all the recipes you've saved? Head over to <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}>My Kitchen.</em></h1></div>
             </div>
             <div class='mr-16'>
-            <h1 class='flex justify-end mr-40 mt-16 pb-4'><em><strong><NavLink to='/recipes'>Featured Recipe</NavLink></strong></em></h1>
+            <div class='mb-64'>
+            <h1 class='flex justify-end mr-40 pb-4'><em><strong><NavLink to='/recipes'>Featured Recipe</NavLink></strong></em></h1>
             <div class='flex justify-end mr-16'>
                 <img src={image} class='w-3/12 h-3/12'></img>
             </div>
             <div class='mr-40 pt-8'>
                 <h1 onClick={handleClick} class={theme === 'light' ? 'hover:text-peach flex justify-end' : 'hover:text-avocado flex justify-end'}><NavLink to='/recipes' exact={true}>{recipes.title}</NavLink></h1>
+            </div>
             </div>
             </div>
         </div>

@@ -13,6 +13,8 @@ import Recipes from './components/Recipes';
 import Homepage from './components/Homepage'
 import UserProfile from './components/UserProfile';
 import IndividualRecipe from './components/IndividualRecipe';
+import Blog from './components/Blog';
+import Posts from './components/Posts';
 import { useThemeContext } from './context/ThemeContext'
 import "tailwindcss/tailwind.css"
 
@@ -58,18 +60,21 @@ function App() {
         <ProtectedRoute path="/" exact={true} >
           <Homepage />
         </ProtectedRoute>
-        <ProtectedRoute path="/mykitchen" exact={true}>
+        {/* <ProtectedRoute path="/mykitchen" exact={true}>
             <MyKitchen />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path="/recipes" exact={true}>
             <Recipes />
         </ProtectedRoute>
         {/* <Route path="/plans" exact={true}>
             <Plans />
         </Route> */}
-        {/* <Route path="/blog" exact={true}>
+        <ProtectedRoute path="/create" exact={true}>
             <Blog />
-        </Route> */}
+        </ProtectedRoute>
+        <ProtectedRoute path='/blog' exact={true}>
+          <Posts />
+        </ProtectedRoute>
         <Route path="/recipes/:id" exact={true}>
             <IndividualRecipe />
         </Route>

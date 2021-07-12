@@ -50,10 +50,10 @@ function MyKitchen () {
     return (
         <div>
             <TabsRender />
-            <form>
+            {/* <form>
                 <input type='text' placeholder='title' onClick={(e) => setTitle(e.target.value)}></input>
             </form>
-            <button type='submit' onSubmit={handleSubmit}>Button</button>
+            <button type='submit' onSubmit={handleSubmit}>Button</button> */}
         </div>
     )
 }

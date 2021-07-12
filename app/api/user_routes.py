@@ -24,27 +24,27 @@ def user(id):
 @login_required
 def my_kitchen():
     if request.method == 'POST':
-        # data = request.json
-        # dict_type = {
-        #     recipe: {current_user.recipes, Recipe},
-        #     blogpost: {current_user.blogposts, Blogpost},
-        #     mealplan: {current_user.mealplans, MealPlan}
-        #     }
-        # itemId = int(data['itemId'])
-        # type = data['type']
-        # assoc, model = dict_type[type]
-        # assoc.append(model.query.get(itemId))
-        # db.session.commit()
-        # return {}
-        data = request.json['recipe']
-        newRecipe = Recipe()
-        newRecipe.userId = current_user.id
-        newRecipe.name = data['name']
-        newRecipe.title = data['title']
-        newRecipe.type = data['type']
-        newRecipe.description = data['description']
-        newRecipe.ingredients = data['ingredients']
-        newRecipe.instructions = data['instructions']
+        data = request.json
+        dict_type = {
+            recipe: {current_user.recipes, Recipe},
+            blogpost: {current_user.blogposts, Blogpost},
+            mealplan: {current_user.mealplans, MealPlan}
+            }
+        itemId = int(data['itemId'])
+        type = data['type']
+        assoc, model = dict_type[type]
+        assoc.append(model.query.get(itemId))
+        db.session.commit()
+        return {}
+        # data = request.json['recipe']
+        # newRecipe = Recipe()
+        # newRecipe.userId = current_user.id
+        # newRecipe.name = data['name']
+        # newRecipe.title = data['title']
+        # newRecipe.type = data['type']
+        # newRecipe.description = data['description']
+        # newRecipe.ingredients = data['ingredients']
+        # newRecipe.instructions = data['instructions']
         db.session.add(newRecipe)
         return {'recipes': [r.to_dict() for r in newRecipe.recipe], 'recipe': newRecipe.to_dict()}
     elif request.method == 'DELETE':
@@ -70,15 +70,17 @@ def managing_comments():
         comment = Comment.query.get(request.json['comment'])
         comment.comment = request.json['comment']   
     elif request.method == 'DELETE':
-        user = current_user.id
-        if Comment.userId == user:
-            comment = Comment()
-            comment.comment = data['comment']
-            db.session.delete(comment)
-        # comment = Comment.query.filter(Comment.id == user).first()
-        # db.session.delete(comment)
-        # return {'id': user}
-    db.session.commit()
+        comment = Comment.query.get(request.json['id'])
+        print(comment)
+        db.session.delete(comment)
+        db.session.commit()
+
+# @user_routes.route('/<int:id>', methods = ['DELETE'])
+# @login_required
+# def deleting_comments():
+#     comment = Comment.query.get(id)
+#     db.session.delete(comment)
+#     db.session.commit()
 
 # Settings
 # @user_routes.route('/<int:id>')

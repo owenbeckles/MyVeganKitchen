@@ -52,7 +52,7 @@ export const editComments = (comment, id, recipeId, userId) => async (dispatch) 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body: ({
             comment,
             id,
             recipeId,
@@ -66,15 +66,25 @@ export const editComments = (comment, id, recipeId, userId) => async (dispatch) 
     dispatch(editComment(data));
 }
 
-export const deleteComments = () => async (dispatch) => {
+export const deleteComments = (comment, id, recipeId, userId) => async (dispatch) => {
     const res = await fetch(`/api/users/`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            comment,
+            id,
+            recipeId,
+            userId  
+        })
+
     })
     const data = await res.json();
     if (data.errors) {
-        return data;
+        console.log(data)
     }
-    dispatch(deleteComment(data));
+    dispatch(deleteComment(data))
     return data;
 }
 

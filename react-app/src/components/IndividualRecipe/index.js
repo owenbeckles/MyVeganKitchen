@@ -31,11 +31,14 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
     const [recipeId, setRecipeId] = useState(null);
     const [comments, setComments] = useState(null);
     const user = useSelector((state) => state.session.user ? state.session.user : null);
+    const userComment = useSelector((state) => state.comments)
     const history = useHistory();
     const themeChoice = theme === 'light' ? light : dark;
     const instructions = recipe.ingredients.split(';')
     let image;
     console.log(instructions);
+    console.log(userComment);
+    console.log(comments)
 
     if (recipe.title === 'Vegan Quesadillas') {
         image = veganquesadillas
@@ -89,7 +92,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         e.preventDefault();
         const data = {
             comment,
-            id
+            recipeId: recipe.id,
         }
         await dispatch(deleteComments(data));
     }
@@ -123,33 +126,11 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
   </div>
 </div>
 <h3 className='recipe-instructions mr-16' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
-            {/* <div>
-                <img src={image} style={{width:'300px', height:'300px'}}></img>
-                <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
-            </div> */}
-            {/* <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
-                {instructions.map(instruction => {
-                    return (
-                        <li>{instruction}</li>
-                    )
-                })}
-            </div> */}
-            {/* <div>
-                <h3 className='recipe-instructions' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>{recipe.instructions}</h3>
-            </div> */}
 
             <div>
-                {/* <form>
-                    <label>
-                        <textarea type='text' value={comment} placeholder='Comment...' onChange={(e) => setComment(e.target.value)}></textarea>
-                    </label>
-                </form> */}
                 <div>
-                    {/* <button onClick={handleClick}>Comment</button> */}
+
                 </div>
-                {/* <button class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-  Click me
-</button> */}
 
             </div>
             <div className={theme === 'light' ? "bg-light-bg sm:rounded-lg" : "bg-dark-bg sm:rounded-lg"}>
