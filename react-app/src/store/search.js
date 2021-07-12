@@ -1,5 +1,5 @@
 // constants
-const SEARCH_RECIPE = 'session/SEARCH/RECIPE';
+const SEARCH_RECIPE = 'session/SEARCH_RECIPE';
 
 const searchRecipes = (recipe) => {
     return {
@@ -8,6 +8,25 @@ const searchRecipes = (recipe) => {
     }
 }
 
-// export const searchForRecipe = () => async (dispatch) => {
-//     const res = await fetch('/api/search/${}')
-// }
+export const searchBar = (type) => async dispatch => {
+    const res = await fetch(`/api/search/${type}`, {
+        method: 'GET',
+    })
+    const data = await res.json()
+    dispatch(searchRecipes(data));
+    return data;
+}
+
+const initialState = {}
+
+export default function searchBarReducer(state = initialState, action) {
+    let newState;
+    switch(action.type) {
+        case SEARCH_RECIPE:
+            newState = Object.assign({}, state);
+            newState.data = action.payload
+            return newState
+        default:
+            return state;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getIndividualRecipe } from '../../store/recipe';
+// import { getIndividualRecipe } from '../../store/recipe';
 import { postComments, deleteComments } from '../../store/comment';
 import { ThemeContext } from '../../context/ThemeContext';
 import { addUserItems } from '../../store/mykitchen';
@@ -69,10 +69,6 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         }
     })
 
-    useEffect(() => {
-        dispatch(getIndividualRecipe());
-    }, [])
-
     const handleSubmit = async(e) => {
         e.preventDefault()
         const data = {title: recipe.title, description: recipe.description}
@@ -92,7 +88,8 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
     const deleteClick = async(e) => {
         e.preventDefault();
         const data = {
-            comment
+            comment,
+            id
         }
         await dispatch(deleteComments(data));
     }

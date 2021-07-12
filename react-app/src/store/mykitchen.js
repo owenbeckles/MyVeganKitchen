@@ -24,7 +24,7 @@ const createRecipe = (payload) => {
     }
 }
 
-export const creatingRecipes = (name, title, type, description, instructions, ingredients, id) => async (dispatch) => {
+export const creatingRecipes = (name, title, type, description, instructions, ingredients) => async (dispatch) => {
     const res = await fetch('/api/users/mykitchen', {
         headers: {
             'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export const creatingRecipes = (name, title, type, description, instructions, in
             type,
             description,
             instructions, 
-            ingredients
+            ingredients, 
         })
     });
     const data = await res.json();
@@ -82,16 +82,14 @@ export const deleteUserItems = (itemId, type) => async (dispatch) => {
     dispatch(removeItem(data));
 }
 
-export default function myKitchenReducer(state = [], action) {
+const initialState = {}
+
+export default function myKitchenReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
-        case ADD_ITEM:
-            newState = [...state];
-            newState.push(action.payload);
-            return newState;
         case CREATE_RECIPE:
-            newState = [...state];
-            newState.push(action.payload.recipe);
+            newState = Object.assign({}, state)
+            newState[action.payload.id] = action.payload
             return newState;
         default:
             return state;

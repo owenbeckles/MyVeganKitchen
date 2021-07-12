@@ -70,12 +70,14 @@ def managing_comments():
         comment = Comment.query.get(request.json['comment'])
         comment.comment = request.json['comment']   
     elif request.method == 'DELETE':
-        comment = Comment.query.get(id)
-        print(comment)
-        deleteComment = comment.to_dict()
-        for deleted in deleteComment['comment']:
-            comment.comment.remove(Comment.query.get(deleted['id']))
-        db.session.delete(comment)
+        user = current_user.id
+        if Comment.userId == user:
+            comment = Comment()
+            comment.comment = data['comment']
+            db.session.delete(comment)
+        # comment = Comment.query.filter(Comment.id == user).first()
+        # db.session.delete(comment)
+        # return {'id': user}
     db.session.commit()
 
 # Settings
