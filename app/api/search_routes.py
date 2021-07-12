@@ -3,7 +3,7 @@ from app.models import db, Recipe, MealPlan, Blog
 
 search_routes = Blueprint('search', __name__)
 
-@search_routes.route('/search/<str:type>')
+@search_routes.route('/')
 def searches(type):
-    recipes = Recipe.query.filter(Recipe.title.contains(type)).all()
-    return recipes.to_dict()
+    recipes = Recipe.query.filter(Recipe.name.like(f'%{type}%')).all()
+    return {'search': [search.to_dict() for search in recipes]}

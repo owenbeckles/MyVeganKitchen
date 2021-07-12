@@ -36,6 +36,17 @@ def my_kitchen():
         assoc.append(model.query.get(itemId))
         db.session.commit()
         return {}
+        # data = request.json['recipe']
+        # newRecipe = Recipe()
+        # newRecipe.userId = current_user.id
+        # newRecipe.name = data['name']
+        # newRecipe.title = data['title']
+        # newRecipe.type = data['type']
+        # newRecipe.description = data['description']
+        # newRecipe.ingredients = data['ingredients']
+        # newRecipe.instructions = data['instructions']
+        db.session.add(newRecipe)
+        return {'recipes': [r.to_dict() for r in newRecipe.recipe], 'recipe': newRecipe.to_dict()}
     elif request.method == 'DELETE':
         assoc.remove(model.query.get(itemId))
         db.session.commit()
@@ -56,25 +67,33 @@ def managing_comments():
         db.session.commit()
         return {'comments': [c.to_dict() for c in newComment.recipe.comments], 'comment': newComment.to_dict()}
     elif request.method == 'PUT':
-        comment = Comment.query.get(request.json['id'])
+        comment = Comment.query.get(request.json['comment'])
         comment.comment = request.json['comment']   
     elif request.method == 'DELETE':
         comment = Comment.query.get(request.json['id'])
+        print(comment)
         db.session.delete(comment)
-    db.session.commit()
+        db.session.commit()
+
+# @user_routes.route('/<int:id>', methods = ['DELETE'])
+# @login_required
+# def deleting_comments():
+#     comment = Comment.query.get(id)
+#     db.session.delete(comment)
+#     db.session.commit()
 
 # Settings
-@user_routes.route('/<int:id>')
-@login_required
-def settings_page(id):
-    settings = User.query.get(id)
-    return settings.to_dict()
+# @user_routes.route('/<int:id>')
+# @login_required
+# def settings_page(id):
+#     settings = User.query.get(id)
+#     return settings.to_dict()
 
-@user_routes.route('/<int:id>/edit', methods = ['PUT'])
-@login_required
-def settings_edit(id):
-    id = request.json['id']
-    user = User.query.get(id)
-    user.email = request.json['email']
-    db.session.add(user)
-    db.session.commit()
+# @user_routes.route('/<int:id>/edit', methods = ['PUT'])
+# @login_required
+# def settings_edit(id):
+#     id = request.json['id']
+#     user = User.query.get(id)
+#     user.email = request.json['email']
+#     db.session.add(user)
+#     db.session.commit()
