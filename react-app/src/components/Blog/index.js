@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {useState, useEffect} from 'react';
 import { newBlog } from '../../store/blogpost';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
 
 
@@ -19,6 +19,7 @@ const Blog = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [description, setDescription] = useState('')
+    const { id } = useParams()
 
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
@@ -30,7 +31,8 @@ const Blog = () => {
             name,
             title,
             content,
-            description
+            description,
+            id
         ))
         history.push('/blog')
     }

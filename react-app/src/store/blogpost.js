@@ -1,16 +1,8 @@
 // constants
-// const GET_POST = 'recipe/GET_POST';
 const ALL_POSTS = 'blogpost/ALL_POSTS';
 const CREATE_POST = 'blogpost/CREATE_POST';
 const DELETE_POST = 'blogpost/DELETE_POST';
 
-// thunks
-// const getPost = (post) => {
-//     return {
-//         type: GET_POST,
-//         payload: post,
-//     }
-// }
 
 const allPosts = (post) => {
     return {
@@ -26,10 +18,10 @@ const createPost = (payload) => {
     }
 }
 
-const deletePost = (payload) => {
+const deletePost = (post) => {
     return {
         type: DELETE_POST,
-        payload
+        post
     }
 }
 
@@ -37,12 +29,19 @@ const deletePost = (payload) => {
 export const deleteUserPosts = (id) => async(dispatch) => {
     const res = await fetch(`/api/blog/`, {
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id
+        })
     })
     const data = await res.json();
     if (data.errors) {
         return data;
     }
-    dispatch(deletePost(data.post))
+    // console.log(data.post)
+    dispatch(deletePost(data))
 }
 
 export const getAllBlogPosts = () => async (dispatch) => {
@@ -53,10 +52,11 @@ export const getAllBlogPosts = () => async (dispatch) => {
     if (data.errors) {
         return data;
     }
+
     dispatch(allPosts(data.post));
 }
 
-export const newBlog = (name, title, content, description, blogId) => async (dispatch) => {
+export const newBlog = (name, title, content, description, id) => async (dispatch) => {
     const res = await fetch('/api/blog/', {
         method: 'POST',
         headers: {
@@ -67,7 +67,7 @@ export const newBlog = (name, title, content, description, blogId) => async (dis
             title,
             content,
             description,
-            blogId
+            id
         })
     })
     const data = await res.json();
@@ -82,12 +82,6 @@ const initialState = {};
 export default function blogPostReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
-        // case GET_POST:
-        //     newState = Object.assign({}, state);
-        //     action.payload.forEach(blog => {
-        //         newState[blog.id] = blog;
-        //     });
-        //     return newState;
         case ALL_POSTS:
             newState = Object.assign({}, state);
             action.payload.forEach(blog => {
@@ -102,10 +96,15 @@ export default function blogPostReducer(state = initialState, action) {
             newState['description'] = action.payload.description
             return newState;
         case DELETE_POST:
-            newState = Object.assign({}, state);
-            action.payload.forEach(blog => {
-                newState[blog.id] = blog
-            });
+            newState = {...state}
+            // let post = action.post
+            let id = action.post.id
+            console.log(newState)
+        //     newState = {...state};
+        //     // action.payload.forEach(blog => {
+        //     //     newState[blog.id] = blog
+        //     // });
+            delete newState.id
             return newState;
         default:
             return state;

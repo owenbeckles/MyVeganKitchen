@@ -11,6 +11,7 @@ const Posts = () => {
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
     const dispatch = useDispatch();
+    const [blogId, setBlogId] = useState(null)
     console.log(blog.name)
     const [activePost, setactivePost] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,7 @@ const Posts = () => {
             await dispatch(getAllBlogPosts());
             setLoaded(!loaded)
         })()
-    }, [isLoading])
+    }, [isLoading, blogId])
 
     return (
         <div className='flex flex-col-reverse' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
@@ -36,7 +37,7 @@ const Posts = () => {
             )
         })}
     </div>
-        {activePost && <IndividualPost post={activePost} setIsLoading={setIsLoading} />}
+        {activePost && <IndividualPost blogId={blogId} setBlogId={setBlogId} post={activePost} setIsLoading={setIsLoading} />}
         </div>
     )
     

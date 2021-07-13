@@ -5,20 +5,27 @@ import { useHistory, useParams } from 'react-router-dom';
 // import { getIndividualRecipe } from '../../store/recipe';
 import { postComments, deleteComments } from '../../store/comment';
 import { ThemeContext } from '../../context/ThemeContext';
-import { deleteUserPosts } from '../../store/blogpost';
+import { deleteUserPosts, getAllBlogPosts } from '../../store/blogpost';
 
 
 
 
-const IndividualPost = ({post}) => {
+const IndividualPost = ({post, blogId, setBlogId}) => {
+    const history = useHistory()
     const dispatch = useDispatch();
+    
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
     const paragraph = post.content.split(';');
     const {id} = useParams()
 
+    // useEffect(() => {
+    //     dispatch(getAllBlogPosts())
+    // }, [dispatch, blogId])
+
     const handleClick = () => {
-        dispatch(deleteUserPosts())
+        dispatch(deleteUserPosts(post.id))
+        window.location.reload();
     }
 
     return (
@@ -36,9 +43,9 @@ const IndividualPost = ({post}) => {
                     })}
                 </div>
             </div>
-            {/* <div>
-                <button onClick={handleClick}>Delete</button>
-            </div> */}
+            <div class='flex justify-center'>
+                <button className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-8 mb-1 mt-8 ease-linear transition-all duration-150 flex justify-center" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-8 mb-1 mt-8 ease-linear transition-all duration-150"} onClick={() => handleClick()}>Delete</button>
+            </div>
         </div>
     )
 }
