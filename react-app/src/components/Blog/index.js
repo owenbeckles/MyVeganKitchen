@@ -89,8 +89,8 @@ const Blog = () => {
                     type='text'
                 ></textarea>
             </div>
-            <div>
-                <button type='submit'>Submit</button>
+            <div class='flex justify-center'>
+                <button className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-8 mb-1 mt-8 ease-linear transition-all duration-150 flex justify-center" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-8 mb-1 mt-8 ease-linear transition-all duration-150"} type='submit'>Submit</button>
             </div>
             </form>
         </div>
