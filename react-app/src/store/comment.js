@@ -45,7 +45,7 @@ export const postComments = (comment, recipeId) => async (dispatch) => {
 }
 
 export const editComments = (comment, id) => async (dispatch) => {
-    const res = await fetch(`/api/users/edit/`, {
+    const res = await fetch(`/api/users/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
