@@ -53,27 +53,53 @@ def my_kitchen():
         return {}
 
 # Comments
-@user_routes.route('/', methods = ['POST', 'PUT', 'DELETE'])
+@user_routes.route('/', methods = ['POST'])
 @login_required
 def managing_comments():
+    data = request.json
+    print("************************", data)
     if request.method == 'POST':
-        data = request.json['comment']
         print(data)
-        newComment = Comment()
-        newComment.userId = current_user.id
-        newComment.recipeId = data['recipeId']
-        newComment.comment = data['comment']
+        newComment = Comment(
+            userId = current_user.id,
+            recipeId = data['comment']['recipeId'],
+            comment = data['comment']['comment']
+        )
+        # newComment.userId = current_user.id
+        # newComment.recipeId = data['recipeId']
+        # newComment.comment = data['comment']
         db.session.add(newComment)
         db.session.commit()
         return {'comments': [c.to_dict() for c in newComment.recipe.comments], 'comment': newComment.to_dict()}
-    elif request.method == 'PUT':
-        comment = Comment.query.get(request.json['comment'])
-        comment.comment = request.json['comment']   
-    elif request.method == 'DELETE':
-        comment = Comment.query.get(request.json['id'])
-        print(comment)
-        db.session.delete(comment)
-        db.session.commit()
+    # elif request.method == 'PUT':
+    #     comment = Comment.query.get(request.json['comment'])
+    #     comment.comment = request.json['comment']   
+    # elif request.method == 'DELETE':
+    #     comment = Comment.query.get(request.json['id'])
+    #     print(comment)
+    #     db.session.delete(comment)
+    #     db.session.commit()
+
+@user_routes.route('/', methods=['DELETE'])
+@login_required
+def deleting_comments():
+    data = request.json
+    print("******************", data)
+    comment = Comment.query.filter_by(comment = data['comment']).first()
+    print("******************", comment)
+    db.session.delete(comment)
+    db.session.commit()
+    return {}
+
+@user_routes.route('/edit/', methods=['PUT'])
+@login_required
+def update_comments():
+    data = request.json
+    comment = Comment.query.get(int(data['id']))
+    comment.comment = data['comment']
+    db.session.add(comment)
+    db.session.commit()
+    return comment.to_dict()
 
 # @user_routes.route('/<int:id>', methods = ['DELETE'])
 # @login_required

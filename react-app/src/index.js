@@ -7,6 +7,7 @@ import configureStore from './store';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeContext, useThemeContext } from './context/ThemeContext'
 import { createTheme } from '@material-ui/core/styles';
+import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
 
@@ -21,9 +22,11 @@ const button = createTheme({
 const Root = () => {
   
   return (
+    <ModalProvider>
     <ThemeProvider button={button}>
       <App />
     </ThemeProvider>
+    </ModalProvider>
   )
 }
 

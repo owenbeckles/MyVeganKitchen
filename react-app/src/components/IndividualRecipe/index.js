@@ -7,6 +7,7 @@ import { postComments, deleteComments } from '../../store/comment';
 import { ThemeContext } from '../../context/ThemeContext';
 import { addUserItems } from '../../store/mykitchen';
 import { useParams } from 'react-router-dom';
+import CommentBox from '../../components/CommentBox';
 import veganquesadillas from '../../images/1.png';
 import springrolls from '../../images/2.png';
 import oystermushrooms from '../../images/3.png';
@@ -39,6 +40,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
     console.log(instructions);
     console.log(userComment);
     console.log(comments)
+    console.log(recipe.comment)
 
     if (recipe.title === 'Vegan Quesadillas') {
         image = veganquesadillas
@@ -88,14 +90,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         setComment('')
     }
 
-    const deleteClick = async(e) => {
-        e.preventDefault();
-        const data = {
-            comment,
-            recipeId: recipe.id,
-        }
-        await dispatch(deleteComments(data));
-    }
+
 
     
 
@@ -169,9 +164,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
                     )
                 }) : recipe.comment?.map(({comment}) => {
                     return (
-                        <div>{comment}
-                        <div><button onClick={deleteClick}>Delete</button></div>
-                        </div>
+                        <CommentBox recipe={recipe} comment={comment} setComments={setComments} setIsLoading={setIsLoading} setComment={setComment}/>
                     )
                 })}
             </div>
