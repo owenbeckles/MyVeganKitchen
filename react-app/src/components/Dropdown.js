@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { Menu, Transition } from '@headlessui/react'
 import {
   ArchiveIcon,
@@ -28,6 +29,7 @@ function classNames(...classes) {
 export default function Dropdown() {
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
+    const user = useSelector((state) => state.session.user)
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -54,6 +56,10 @@ export default function Dropdown() {
               static
               className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
             >
+            <div className="px-4 py-3">
+                <p className="text-sm">Signed in as</p>
+                <p className="text-sm font-medium text-gray-900 truncate">{user.email}</p>
+              </div>
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
