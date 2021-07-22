@@ -378,7 +378,7 @@ export default function SplashPage() {
               {/* </div> */}
             {/* </div> */}
           </div>
-          <div className="flex flex-row justify-center pt-2">
+          <div className="flex flex-row justify-center border-t border-white pt-16">
             {/* <p className="text-base text-gray-400 xl:text-center">&copy; 2020 Workflow, Inc. All rights reserved.</p> */}
             <a class='pr-32' href='https://github.com/owenbeckles'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-github" viewBox="0 0 16 16">
