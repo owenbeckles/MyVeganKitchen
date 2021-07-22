@@ -18,7 +18,6 @@ const CommentForm = ({recipe, comment, setComments, setIsLoading}) => {
         }
     }
     
-    // sort();
 
     const handleClick = async(e) => {
         e.preventDefault()

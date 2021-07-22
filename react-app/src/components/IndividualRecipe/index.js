@@ -111,7 +111,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
             </div>
             <div class="rounded h-full flex justify-start items-center float-left mx-8">
   <div class={theme === 'light' ? "rounded bg-white shadow-md h-max w-96 p-6 flex flex-col" : "rounded bg-dark-bg border-style:solid border-gray-50 shadow-md h-max w-96 p-6 flex flex-col"}>
-  <div style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+  <div class={theme === 'light' ? 'p-16' : "border-dashed border-2 border-light-blue-500 p-16"} style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
                 {instructions.map(instruction => {
                     return (
                         <li>{instruction}</li>

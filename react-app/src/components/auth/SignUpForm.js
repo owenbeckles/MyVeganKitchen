@@ -85,7 +85,7 @@ const SignUpForm = () => {
     //   </div>
     //   <button type="submit">Sign Up</button>
     // </form>
-    <div class={theme === 'light' ? 'bg-light-bg flex justify-center p-64' : 'bg-dark-bg flex justify-center p-64'}>
+    <div class={theme === 'light' ? 'bg-light-bg flex justify-center p-48' : 'bg-dark-bg flex justify-center p-48'}>
     <div class="w-64 flex shadow-lg flex-col bg-cover bg-center justify-content bg-white p-6 rounded pt-8 pb-8">
   <div class="text-center text-gray-500 mb-6">
     <h2>SIGN UP
