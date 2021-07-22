@@ -30,7 +30,7 @@ export default function Dropdown() {
     const themeChoice = theme === 'light' ? light : dark;
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left ml-4">
       {({ open }) => (
         <>
           <div>

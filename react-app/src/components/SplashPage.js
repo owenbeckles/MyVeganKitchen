@@ -30,6 +30,7 @@ import { ExternalLinkIcon } from '@heroicons/react/solid'
 import { NavLink } from 'react-router-dom';
 import veganquesadillas from '../images/1.png';
 import { ThemeContext } from '../context/ThemeContext';
+import { useSelector } from 'react-redux';
 
 const navigation = [
   { name: 'Work', href: '#' },
@@ -130,7 +131,7 @@ const footerNavigation = {
 export default function SplashPage() {
     const { setTheme, light, dark, theme } = useContext(ThemeContext);
     const themeChoice = theme === 'light' ? light : dark;
-
+    const user = useSelector((state) => state.session.user)
     
   return (
     <div className="min-h-screen bg-white">
@@ -243,13 +244,12 @@ export default function SplashPage() {
         {/* Header */}
         <div className={theme === 'light' ? "py-24 bg-light-bg sm:py-32" : "py-24 bg-dark-bg sm:py-32"}>
           <div className="max-w-md mx-auto pl-4 pr-8 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:px-8">
-            <h1 className="text-4xl leading-10 font-extrabold tracking-tight text-gray-900 text-center sm:text-5xl sm:leading-none lg:text-6xl">
-              My Vegan Kitchen
+            <h1 className={theme === 'light' ? "text-4xl leading-10 font-extrabold tracking-tight text-gray-900 text-center sm:text-5xl sm:leading-none lg:text-6xl" : "text-4xl leading-10 font-extrabold tracking-tight text-grey-text text-center sm:text-5xl sm:leading-none lg:text-6xl"}>
+              Welcome back, {user.username}!
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-xl leading-normal text-gray-500 text-center">
-              Convallis feugiat et aliquet pellentesque dictum nisi, velit. Egestas fermentum adipiscing risus quam ac
-              consectetur mattis turpis tristique.
-            </p>
+            {/* <p className="mt-6 max-w-3xl mx-auto text-xl leading-normal text-gray-500 text-center">
+                Welcome back, 
+            </p> */}
           </div>
         </div>
 
@@ -267,183 +267,16 @@ export default function SplashPage() {
           <div className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2">
             <div className="lg:pr-8">
               <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
-                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Let's work together</h2>
+                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">My Vegan Kitchen</h2>
                 <p className="mt-4 text-lg text-gray-500 sm:mt-3">
-                  We’d love to hear from you! Send us a message using the form opposite, or email us. We’d love to hear
-                  from you! Send us a message using the form opposite, or email us.
+                  <div class=''><h1 >Looking to share your knowledge on the newest superfood? <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><NavLink to='/create'>Create a new post.</NavLink></em></h1></div>
+                <br></br>
+                <br></br>
+                <div class=''><h1>Need a new go-to meal? Make sure to stay updated on our <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><NavLink to='/recipes'>latest recipes.</NavLink></em></h1></div>
+                <br></br>
+                <br></br>
+                <div class=''><h1>Trying to view all the recipes you've saved? Head over to <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}>My Kitchen.</em></h1></div>
                 </p>
-                <form action="#" method="POST" className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-                  <div>
-                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                      First name
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="first-name"
-                        id="first-name"
-                        autoComplete="given-name"
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                      Last name
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autoComplete="family-name"
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                      Company
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="company"
-                        id="company"
-                        autoComplete="organization"
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <div className="flex justify-between">
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        Phone
-                      </label>
-                      <span id="phone-description" className="text-sm text-gray-500">
-                        Optional
-                      </span>
-                    </div>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        autoComplete="tel"
-                        aria-describedby="phone-description"
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <div className="flex justify-between">
-                      <label htmlFor="how-can-we-help" className="block text-sm font-medium text-gray-700">
-                        How can we help you?
-                      </label>
-                      <span id="how-can-we-help-description" className="text-sm text-gray-500">
-                        Max. 500 characters
-                      </span>
-                    </div>
-                    <div className="mt-1">
-                      <textarea
-                        id="how-can-we-help"
-                        name="how-can-we-help"
-                        aria-describedby="how-can-we-help-description"
-                        rows={4}
-                        className="block w-full shadow-sm sm:text-sm focus:ring-grape-500 focus:border-grape-500 border border-gray-300 rounded-md"
-                        defaultValue={''}
-                      />
-                    </div>
-                  </div>
-                  <fieldset className="sm:col-span-2">
-                    <legend className="block text-sm font-medium text-gray-700">Expected budget</legend>
-                    <div className="mt-4 grid grid-cols-1 gap-y-4">
-                      <div className="flex items-center">
-                        <input
-                          id="budget-under-25k"
-                          name="budget"
-                          defaultValue="under_25k"
-                          type="radio"
-                          className="focus:ring-grape-500 h-4 w-4 text-grape-600 border-gray-300"
-                        />
-                        <label htmlFor="budget-under-25k" className="ml-3">
-                          <span className="block text-sm text-gray-700">Less than $25K</span>
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="budget-25k-50k"
-                          name="budget"
-                          defaultValue="25k-50k"
-                          type="radio"
-                          className="focus:ring-grape-500 h-4 w-4 text-grape-600 border-gray-300"
-                        />
-                        <label htmlFor="budget-25k-50k" className="ml-3">
-                          <span className="block text-sm text-gray-700">$25K – $50K</span>
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="budget-50k-100k"
-                          name="budget"
-                          defaultValue="50k-100k"
-                          type="radio"
-                          className="focus:ring-grape-500 h-4 w-4 text-grape-600 border-gray-300"
-                        />
-                        <label htmlFor="budget-50k-100k" className="ml-3">
-                          <span className="block text-sm text-gray-700">$50K – $100K</span>
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="budget-over-100k"
-                          name="budget"
-                          defaultValue="over_100k"
-                          type="radio"
-                          className="focus:ring-grape-500 h-4 w-4 text-grape-600 border-gray-300"
-                        />
-                        <label htmlFor="budget-over-100k" className="ml-3">
-                          <span className="block text-sm text-gray-700">$100K+</span>
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="how-did-you-hear-about-us" className="block text-sm font-medium text-gray-700">
-                      How did you hear about us?
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="how-did-you-hear-about-us"
-                        id="how-did-you-hear-about-us"
-                        className="shadow-sm focus:ring-grape-500 focus:border-grape-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-right sm:col-span-2">
-                    <button
-                      type="submit"
-                      className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-grape-600 hover:bg-grape-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grape-500"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
               </div>
             </div>
           </div>
@@ -453,46 +286,46 @@ export default function SplashPage() {
         <div className={theme === 'light' ? "bg-light-bg" : "bg-dark-bg"}>
           <div className="max-w-md mx-auto text-center py-16 px-4 sm:max-w-2xl sm:py-24 sm:px-6 lg:px-8 lg:py-32">
             <h2 className="text-3xl font-extrabold sm:text-4xl">
-              <span className="block text-white">Looking for something?</span>
+              <span className={theme === 'light' ? "block text-grey-text" : "block text-white"}>Looking for something?</span>
               <span className="block text-grape-900">Browse our recipes</span>
             </h2>
             <a
-              className="mt-8 w-full inline-flex items-center justify-center py-3 px-5 bg-white border border-transparent rounded-md shadow-md text-base font-medium text-grape-600 hover:bg-grape-50 sm:w-auto"
+              className={theme === 'light' ? "mt-8 w-full inline-flex items-center justify-center py-3 px-5 bg-light-bg hover:bg-peach border border-peach rounded-md shadow-md text-base font-medium text-peach hover:text-white sm:w-auto" : "mt-8 w-full inline-flex items-center justify-center py-3 px-5 bg-dark-bg hover:bg-avocado border border-avocado rounded-md shadow-md text-base font-medium text-avocado hover:text-black sm:w-auto"}
             >
               <NavLink to='/recipes' exact={true}>Start Browsing</NavLink>
-              <ExternalLinkIcon className="ml-3 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+              {/* <ExternalLinkIcon className="ml-3 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" /> */}
             </a>
           </div>
         </div>
       </main>
 
       <footer className={theme === 'light' ? "bg-peach" : "bg-avocado"} aria-labelledby="footer-heading">
-        <h2 id="footer-heading" className="sr-only">
+        {/* <h2 id="footer-heading" className="sr-only">
           Footer
-        </h2>
+        </h2> */}
         <div className="max-w-md mx-auto py-12 px-4 sm:max-w-lg sm:pt-16 sm:px-6 lg:max-w-7xl lg:pt-24 lg:pb-16 lg:px-8">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8 xl:col-span-1">
+          {/* <div className="xl:grid xl:grid-cols-3 xl:gap-8"> */}
+            {/* <div className="space-y-8 xl:col-span-1">
               <img
                 className="h-10"
                 src="https://tailwindui.com/img/logos/workflow-mark.svg?color=gray&shade=400"
                 alt="Company name"
-              />
-              <p className="text-gray-400 text-base">
+              /> */}
+              {/* <p className="text-gray-400 text-base">
                 Making the world a better place through constructing elegant hierarchies.
-              </p>
-              <div className="flex space-x-6">
+              </p> */}
+              {/* <div className="flex space-x-6">
                 {footerNavigation.social.map((item) => (
                   <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
                   </a>
                 ))}
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
             <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
+              {/* <div className="md:grid md:grid-cols-2 md:gap-8"> */}
+                {/* <div>
                   <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">Solutions</h3>
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.solutions.map((item) => (
@@ -503,8 +336,8 @@ export default function SplashPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
+                </div> */}
+                {/* <div className="mt-12 md:mt-0">
                   <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">Support</h3>
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.support.map((item) => (
@@ -516,8 +349,8 @@ export default function SplashPage() {
                     ))}
                   </ul>
                 </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
+              </div> */}
+              {/* <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">Company</h3>
                   <ul className="mt-4 space-y-4">
@@ -529,8 +362,8 @@ export default function SplashPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
+                </div> */}
+                {/* <div className="mt-12 md:mt-0">
                   <h3 className="text-sm font-semibold text-gray-200 tracking-wider uppercase">Legal</h3>
                   <ul className="mt-4 space-y-4">
                     {footerNavigation.legal.map((item) => (
@@ -541,12 +374,28 @@ export default function SplashPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </div>
+                </div> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
-          <div className="mt-12 border-t border-gray-700 pt-8">
-            <p className="text-base text-gray-400 xl:text-center">&copy; 2020 Workflow, Inc. All rights reserved.</p>
+          <div className="flex flex-row justify-center pt-2">
+            {/* <p className="text-base text-gray-400 xl:text-center">&copy; 2020 Workflow, Inc. All rights reserved.</p> */}
+            <a class='pr-32' href='https://github.com/owenbeckles'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+            <a class='pr-32' href='https://www.linkedin.com/in/becklesowen/'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                </svg>
+            </a>
+            <a href='https://owenbeckles.com'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-file-person" viewBox="0 0 16 16">
+                    <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                    <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
           </div>
         </div>
       </footer>
