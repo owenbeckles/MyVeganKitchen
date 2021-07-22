@@ -16,7 +16,7 @@ const LogoutButton = () => {
 
   return (
     <div class='pl-4'>
-    <button className={theme === 'light' ? 'border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded' : 'border-2 border-white px-4 text-white hover:text-avocado hover:bg-white rounded'} onClick={onLogout}>Logout</button>
+    <button onClick={onLogout}>Logout</button>
     </div>
   )
 };
