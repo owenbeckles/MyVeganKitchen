@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
 import { useHistory } from 'react-router-dom';
+import SplashPage from '../SplashPage';
 import veganquesadillas from '../../images/1.png';
 import springrolls from '../../images/2.png';
 import oystermushrooms from '../../images/3.png';
@@ -79,7 +80,7 @@ const Homepage = () => {
     
     return (
         <div class={theme === 'light' ? 'bg-light-bg' : 'bg-dark-bg text-grey-text'}>
-            <div class='ml-48 pt-8 flex flex-col'>
+            {/* <div class='ml-48 pt-8 flex flex-col'>
                 <h1 class='text-4xl'>Welcome Back, {user.username}!</h1>
                 <br></br>
                 <br></br>
@@ -101,7 +102,8 @@ const Homepage = () => {
                 <h1 onClick={handleClick} class={theme === 'light' ? 'hover:text-peach flex justify-end' : 'hover:text-avocado flex justify-end'}><NavLink to='/recipes' exact={true}>{recipes.title}</NavLink></h1>
             </div>
             </div>
-            </div>
+            </div> */}
+            <SplashPage />
         </div>
     )
 }
