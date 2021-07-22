@@ -60,15 +60,12 @@ function App() {
         <ProtectedRoute path="/" exact={true} >
           <Homepage />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/mykitchen" exact={true}>
-            <MyKitchen />
-        </ProtectedRoute> */}
+        <ProtectedRoute path="/mykitchen" exact={true}>
+            <div></div>
+        </ProtectedRoute>
         <ProtectedRoute path="/recipes" exact={true}>
             <Recipes />
         </ProtectedRoute>
-        {/* <Route path="/plans" exact={true}>
-            <Plans />
-        </Route> */}
         <ProtectedRoute path="/create" exact={true}>
             <Blog />
         </ProtectedRoute>
