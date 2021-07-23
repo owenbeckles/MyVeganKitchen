@@ -88,6 +88,7 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
         setComments(cs);
         setIsLoading((prev) => !prev);
         setComment('')
+        window.location.reload()
     }
 
 
