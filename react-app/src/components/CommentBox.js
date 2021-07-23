@@ -14,7 +14,8 @@ const CommentBox = ({comment, recipe, setComments, setIsLoading, setComment}) =>
     const deleteClick = (comment_id) => {
         console.log(comment_id)
         console.log(comment)
-        dispatch(deleteComments(comment_id));
+        dispatch(deleteComments(comment_id))
+        window.location.reload()
     }
 
     return (
