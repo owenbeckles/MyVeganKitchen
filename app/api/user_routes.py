@@ -42,6 +42,14 @@ def my_kitchen():
         return {}
 
 # Comments
+# @user_routes.route('/comment/<int:id>')
+# @login_required
+# def loading_comments(id):
+#     recipe = Recipe.query.get(id).to_dict()
+#     print('*********************', recipe)
+#     recipeComments = recipe['comment']
+#     return {'comments': recipeComments}
+
 @user_routes.route('/', methods = ['POST'])
 @login_required
 def managing_comments():
