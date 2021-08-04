@@ -1,4 +1,6 @@
 # My Vegan Kitchen
+![MVK](/images/MVKHomepage.png)
+
 *By Owen Beckles - [Visit My Vegan Kitchen](https://myvegankitchen.herokuapp.com/)*
 
 **Table of Content**
@@ -42,6 +44,12 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
     * Creating Blog Posts
     * Deleting Blog Posts
 * User Settings
+
+## Dark Mode
+
+   ![One](/images/MVKDM1.gif)
+   
+   ![Two](/images/MVKDM2.gif)
 
 ## Application Architecture
 
