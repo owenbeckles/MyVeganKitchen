@@ -1,37 +1,58 @@
 # My Vegan Kitchen
+*By Owen Beckles - [Visit My Vegan Kitchen](https://myvegankitchen.herokuapp.com/)*
 
-My Vegan Kitchen is a full-stack socail application that allow users to browse through a plethora of vegan recipes catered just for their palette. Users are also able to read and share knowledgable blog posts, and comment their opinions on their favorite recipe.
+**Table of Content**
+* [Welcome to My Vegan Kitchen](#welcome-to-my-vegan-kitchen)
+* [Technologies Used](#technologies-used)
+* [MVP Feature List](#mvp-feature-list)
+* [Dark Mode](#dark-mode)
+* [Application Architecture](#application-architecture)
+* [Database Schema](#database-schema)
+* [Frontend Overview](#frontend-overview)
+* [Backend Overview](#backend-overview)
+* [Future Features](#future-features)
+* [Conclusion](#conclusion)
 
-## Technologies
-### Frontend
-- React.js
-- Redux.js
-- Javascript
+## Welcome to My Vegan Kitchen
+My Vegan Kitchen is a full-stack social web application that allow users to browse through a plethora of vegan recipes catered just for their palette. Users are also able to read and share knowledgable blog posts, and comment their opinions on their favorite recipe.
 
-## Backend
-- Python
-- Flask
-- SQLAlchemy
-- Docker
-- Heroku Deployment
+## Technologies Used
+* Frontend
+    * Javascript
+    * React.js
+    * Redux.js
+    * Tailwind CSS
+* Backend
+    * Python
+    * Flask
+    * SQLAlchemy
+    * Docker
+    * Heroku Deployment
 
-## Key Features
-### User Authentification
-#### Users have the ability to create an account based on their entered credentials.
+## MVP Feature List
+* User Authentification
+    * Sign Up
+    * Login
+    * Demo User
+        ![Demo User](/images/MVKDemoExample.gif)
+* Comment on Recipes
+    * Delete Comment
+    * Edit Comment
+* Blog Posts
+    * Creating Blog Posts
+    * Deleting Blog Posts
+* User Settings
 
-### Comments
-#### Users are able to view recipes and share their feedback with a comment. Comments have the ability to be edited, or deleted entirely.
+## Application Architecture
 
-### Blog
-#### Users have the ability to both read and create blog posts. Stories created can be deleted by the logged in user
+### Database Schema
+### Frontend Overview
+### Backend Overview
 
-### Settings
-#### Users can update specific account settings, which includes both the username and email associated with the created account.
+## Future Features
+* My Kitchen
+    * Google Maps API
+* Added Blog Post Features
+* More Customizable User Settings
 
-## Future Feature
-### My Kitchen
-#### Users will be able to store their favorite saved recipes with just the click of a button.
-
-### Search
-#### Users will be able to use the search bar to query for the requested recipe with only a keyword input
-
+## Conclusion
