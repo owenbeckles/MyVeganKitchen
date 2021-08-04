@@ -47,6 +47,8 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
 
 ## Dark Mode
 
+   ![Dark](/images/DarkMode.png)
+
    ![One](/images/MVKDM1.gif)
    
    ![Two](/images/MVKDM2.gif)
