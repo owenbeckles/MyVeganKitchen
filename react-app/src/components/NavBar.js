@@ -93,11 +93,11 @@ const NavBar = () => {
             <i className="fab fa-twitter text-lg leading-lg text-white opacity-75" /> <span className="ml-2"><NavLink to='/blog' exact={true}>Blog</NavLink></span>
           </a>
         </li>}
-        {user && <li className="nav-item">
+        {/* {user && <li className="nav-item">
           <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
             <span className="ml-2"><NavLink to='/mykitchen' exact={true}>My Kitchen</NavLink></span>
           </a>
-        </li>}
+        </li>} */}
       </ul>
       {user && <div class='pl-4'>
     <button className={theme === 'light' ? 'border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded' : 'border-2 border-white px-4 text-white hover:text-avocado hover:bg-white rounded'}><NavLink to='/create' exact={true}>New Post</NavLink></button>
