@@ -98,12 +98,12 @@ const Blog = () => {
         //     <div className="relative bg-white">
         
 
-        <div class={theme === 'light' ? ' bg-light-bg text-grey-text p-16 pt-16' : 'bg-dark-bg text-grey-text p-16 pt-64'}>
+        <div class={theme === 'light' ? ' bg-light-bg text-grey-text p-16 pt-16' : 'bg-dark-bg text-grey-text p-16 pt-16'}>
                 <div className={theme === 'light' ? "bg-light-bg" : "bg-dark-bg"}>
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-base font-semibold text-peach tracking-wide uppercase">Overhead here.</h2>
-          <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+          <h2 className={theme === 'light' ? "text-base font-semibold text-peach tracking-wide uppercase": "text-base font-semibold text-avocado tracking-wide uppercase"}>Overhead here.</h2>
+          <p className={theme === 'light' ? "mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl" : "mt-1 text-4xl font-extrabold text-grey-text sm:text-5xl sm:tracking-tight lg:text-6xl"}>
             My Vegan Blog.
           </p>
           <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
@@ -113,22 +113,22 @@ const Blog = () => {
       </div>
     </div>
   
-        <div className={theme === 'light' ? "bg-light-bg py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12" : "bg-dark-bg py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12"}>
+        <div className={theme === 'light' ? "bg-light-bg lg:col-span-3 lg:px-8 xl:pl-12" : "bg-dark-bg lg:col-span-3 lg:px-8 xl:pl-12"}>
           <div className="max-w-lg mx-auto lg:max-w-none">
             <form action="#" method="POST" className="grid grid-cols-1 gap-y-6">
-              <div>
-                <label htmlFor="full-name" className="sr-only">
+              {/* <div>
+                <label htmlFor="name" className="sr-only">
                   Full name
                 </label>
                 <input
                   type="text"
-                  name="full-name"
+                  name="name"
                   id="full-name"
                   autoComplete="name"
-                  className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-avocado focus:border-avocado border-gray-300 rounded-md"
+                  className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-peach focus:border-peach border-gray-300 rounded-md"
                   placeholder="Name"
                 />
-              </div>
+              </div> */}
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email
@@ -163,7 +163,7 @@ const Blog = () => {
                   id="message"
                   name="message"
                   rows={4}
-                  className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
+                  className="block w-full shadow-sm py-3 px-4 h-96 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
                   placeholder="Message"
                   defaultValue={''}
                 />

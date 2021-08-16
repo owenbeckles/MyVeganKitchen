@@ -70,11 +70,11 @@ const NavBar = () => {
       <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
         <NavLink to='/' exact={true}>My Vegan Kitchen</NavLink>
       </a>
-      <button className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
+      {/* <button className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
         <span className="block relative w-6 h-px rounded-sm bg-white"></span>
         <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
         <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-      </button>
+      </button> */}
     </div>
     <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
       <ul className="flex flex-col lg:flex-row list-none mr-auto">
