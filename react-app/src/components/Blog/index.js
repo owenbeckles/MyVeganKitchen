@@ -115,56 +115,61 @@ const Blog = () => {
   
         <div className={theme === 'light' ? "bg-light-bg lg:col-span-3 lg:px-8 xl:pl-12" : "bg-dark-bg lg:col-span-3 lg:px-8 xl:pl-12"}>
           <div className="max-w-lg mx-auto lg:max-w-none">
-            <form action="#" method="POST" className="grid grid-cols-1 gap-y-6">
-              {/* <div>
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
+              <div>
                 <label htmlFor="name" className="sr-only">
                   Full name
                 </label>
                 <input
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                   type="text"
                   name="name"
                   id="full-name"
-                  autoComplete="name"
                   className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-peach focus:border-peach border-gray-300 rounded-md"
                   placeholder="Name"
                 />
-              </div> */}
+              </div>
               <div>
                 <label htmlFor="email" className="sr-only">
-                  Email
+                  Title
                 </label>
                 <input
+                  onChange={(e) => setTitle(e.target.value)}
+                  value={title}
                   id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  name="title"
+                  type="text"
                   className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
                   placeholder="Title"
                 />
               </div>
               <div>
                 <label htmlFor="phone" className="sr-only">
-                  Phone
+                  Description
                 </label>
                 <input
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={description}
                   type="text"
-                  name="phone"
+                  name="description"
                   id="phone"
-                  autoComplete="tel"
                   className="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
                   placeholder="Description"
                 />
               </div>
               <div>
                 <label htmlFor="message" className="sr-only">
-                  Message
+                  Content
                 </label>
                 <textarea
+                  onChange={(e) => setContent(e.target.value)}
+                  value={content}
                   id="message"
-                  name="message"
+                  name="content"
                   rows={4}
                   className="block w-full shadow-sm py-3 px-4 h-96 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
-                  placeholder="Message"
+                  placeholder="Content"
                   defaultValue={''}
                 />
               </div>
