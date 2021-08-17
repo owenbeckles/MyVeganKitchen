@@ -42,7 +42,9 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
     * Edit Comment
 * Blog Posts
     * Creating Blog Posts
+         ![Creating](/images/MVKCreating.gif)
     * Deleting Blog Posts
+         ![Deleting](/images/MVKDeleting.gif)
 * User Settings
 
 ## Dark Mode
