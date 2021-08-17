@@ -15,6 +15,7 @@ import UserProfile from './components/UserProfile';
 import IndividualRecipe from './components/IndividualRecipe';
 import Blog from './components/Blog';
 import Posts from './components/Posts';
+import NotFound from './components/404Page';
 import { useThemeContext } from './context/ThemeContext'
 import "tailwindcss/tailwind.css"
 
@@ -84,6 +85,7 @@ function App() {
         <ProtectedRoute path='/search/:type'>
           <UserProfile></UserProfile>
         </ProtectedRoute>
+        <Route path='' component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
