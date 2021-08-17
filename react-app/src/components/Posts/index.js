@@ -25,7 +25,25 @@ const Posts = () => {
     }, [isLoading, blogId])
 
     return (
+    <div class='z-0'>
+        <div className={theme === 'light' ? "relative bg-peach" : "relative bg-avocado"}>
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            className="w-full h-full object-cover overflow-hidden"
+            src="https://live.staticflickr.com/65535/51383430738_fd79d7d6ba_b.jpg"
+            alt=""
+          />
+          <div className={theme === 'light' ? "absolute inset-0 mix-blend-multiply" : "absolute inset-0 mix-blend-multiply"} aria-hidden="true" />
+        </div>
+        <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">My Vegan Blog.</h1>
+          <p className="mt-6 text-xl text-white max-w-3xl">
+            A culmination of knowledge on your favorite super foods, all in one place.
+          </p>
+        </div>
+      </div>
         <div className='flex flex-col-reverse' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
+            
     <div className='flex flex-col justify-between pt-5 pb-16 pl-16 mt-16' style={{backgroundColor: themeChoice.background, color: themeChoice.text}}>
         {Object.values(blog).map((post, i) => {
             return (
@@ -38,6 +56,7 @@ const Posts = () => {
         })}
     </div>
         {activePost && <IndividualPost blogId={blogId} setBlogId={setBlogId} post={activePost} setIsLoading={setIsLoading} />}
+        </div>
         </div>
     )
     

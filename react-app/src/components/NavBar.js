@@ -16,7 +16,7 @@ const NavBar = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user)
   const { setTheme, light, dark, theme } = useContext(ThemeContext);
-  const [navbar, setNavbar] = useState('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach');
+  const [navbar, setNavbar] = useState('relative flex flex-wrap items-center justify-between px-2 py-3 bg-peach z-50');
   const [demo, setDemo] = useState('border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded');
   const [search, setSearch] = useState('font-normal leading-snug flex text-center white-space-no-wrap border border-solid border-peach rounded-full text-sm bg-white items-center rounded-r-none pl-2 py-1 text-black border-r-0 placeholder-peach')
   const [searchBar, setSearchBar] = useState('px-2 py-1 h-8 border border-solid  border-peach rounded-full text-sm leading-snug text-black bg-white shadow-none outline-none focus:outline-none w-full font-normal rounded-l-none flex-1 border-l-0 placeholder-peach')
@@ -70,11 +70,11 @@ const NavBar = () => {
       <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
         <NavLink to='/' exact={true}>My Vegan Kitchen</NavLink>
       </a>
-      <button className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
+      {/* <button className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
         <span className="block relative w-6 h-px rounded-sm bg-white"></span>
         <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
         <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-      </button>
+      </button> */}
     </div>
     <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
       <ul className="flex flex-col lg:flex-row list-none mr-auto">
