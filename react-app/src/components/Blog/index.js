@@ -102,12 +102,12 @@ const Blog = () => {
                 <div className={theme === 'light' ? "bg-light-bg" : "bg-dark-bg"}>
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className={theme === 'light' ? "text-base font-semibold text-peach tracking-wide uppercase": "text-base font-semibold text-avocado tracking-wide uppercase"}>Overhead here.</h2>
+          <h2 className={theme === 'light' ? "text-base font-semibold text-peach tracking-wide uppercase": "text-base font-semibold text-avocado tracking-wide uppercase"}>Have insightful knowledge to share with our community?</h2>
           <p className={theme === 'light' ? "mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl" : "mt-1 text-4xl font-extrabold text-grey-text sm:text-5xl sm:tracking-tight lg:text-6xl"}>
-            My Vegan Blog.
+            Let's hear about it.
           </p>
           <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
-            Summary here.
+            Create a new blog post:
           </p>
         </div>
       </div>
@@ -116,6 +116,11 @@ const Blog = () => {
         <div className={theme === 'light' ? "bg-light-bg lg:col-span-3 lg:px-8 xl:pl-12" : "bg-dark-bg lg:col-span-3 lg:px-8 xl:pl-12"}>
           <div className="max-w-lg mx-auto lg:max-w-none">
             <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
+                <div>
+                {errors.map((error) => (
+                    <div>{error}</div>
+                ))}
+                </div>
               <div>
                 <label htmlFor="name" className="sr-only">
                   Full name

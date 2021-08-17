@@ -33,12 +33,12 @@ const Posts = () => {
             src="https://live.staticflickr.com/65535/51383430738_fd79d7d6ba_b.jpg"
             alt=""
           />
-          <div className={theme === 'light' ? "absolute inset-0 bg- mix-blend-multiply" : "absolute inset-0 bg-avocado"} aria-hidden="true" />
+          <div className={theme === 'light' ? "absolute inset-0 mix-blend-multiply" : "absolute inset-0 mix-blend-multiply"} aria-hidden="true" />
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">My Vegan Blog.</h1>
-          <p className="mt-6 text-xl text-indigo-100 max-w-3xl">
-            Summary here.
+          <p className="mt-6 text-xl text-white max-w-3xl">
+            A culmination of knowledge on your favorite super foods, all in one place.
           </p>
         </div>
       </div>
