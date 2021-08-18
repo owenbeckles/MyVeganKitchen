@@ -110,7 +110,7 @@ My Vegan Kitchen's backend framework was structured using Python/Flask. I arrang
    
    * Google Maps API
     
-"My Kitchen" will also utilize Google Maps API so that users will be able to save the location of their favorite vegan spots in the area. If the user goes out        and finds a vegan restaurant that they like, they can come to the site after and pin that location on their personalized Google map.
+      "My Kitchen" will also utilize Google Maps API so that users will be able to save the location of their favorite vegan spots in the area. If the user goes out        and finds a vegan restaurant that they like, they can come to the site after and pin that location on their personalized Google map.
 
 * Added Blog Post Features
 
