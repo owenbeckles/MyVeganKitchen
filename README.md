@@ -13,7 +13,6 @@
 * [Frontend Overview](#frontend-overview)
 * [Backend Overview](#backend-overview)
 * [Future Features](#future-features)
-* [Conclusion](#conclusion)
 
 ## Welcome to My Vegan Kitchen
 My Vegan Kitchen is a full-stack social web application that allow users to browse through a plethora of vegan recipes catered just for their palette. Users are also able to read and share knowledgable blog posts, and comment their opinions on their favorite recipe.
