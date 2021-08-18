@@ -104,9 +104,6 @@ const IndividualRecipe = ({recipe, setIsLoading}) => {
             <div class='flex justify-center mt-2'>
                 <a class={theme === 'light' ? 'text-xs outline-black p-1' : 'text-xs outline-white p-1'}>{recipe.type}</a>
             </div>
-            {/* <div class='flex justify-center pt-4'>
-            <button onClick={handleSubmit} className={theme === 'light' ? "text-peach bg-transparent border border-solid border-peach hover:bg-peach hover:text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150" : "text-avocado bg-transparent border border-solid border-avocado hover:bg-avocado hover:text-black active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150"} type="button">Add to My Kitchen</button>
-            </div> */}
             <div class='flex justify-center my-16'>
             <img src={image} style={{width:'300px', height:'300px'}}></img>
             </div>

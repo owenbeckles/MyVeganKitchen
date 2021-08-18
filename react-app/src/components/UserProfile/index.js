@@ -24,10 +24,6 @@ const UserProfile = () => {
           window.confirm("You are making changes to your account. Click OK to confirm.")
           history.push('/')
     }
-  
-    // useEffect(() => {
-    //   rootEl.current.parentNode.className = theme == 'light' ? 'light' : 'dark'
-    // }, [theme])
 
     useEffect(()=>{
     },[user])

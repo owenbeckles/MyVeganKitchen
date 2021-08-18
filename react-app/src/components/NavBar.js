@@ -70,11 +70,6 @@ const NavBar = () => {
       <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
         <NavLink to='/' exact={true}>My Vegan Kitchen</NavLink>
       </a>
-      {/* <button className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
-        <span className="block relative w-6 h-px rounded-sm bg-white"></span>
-        <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-        <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-      </button> */}
     </div>
     <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
       <ul className="flex flex-col lg:flex-row list-none mr-auto">
@@ -93,11 +88,6 @@ const NavBar = () => {
             <i className="fab fa-twitter text-lg leading-lg text-white opacity-75" /> <span className="ml-2"><NavLink to='/blog' exact={true}>Blog</NavLink></span>
           </a>
         </li>}
-        {/* {user && <li className="nav-item">
-          <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-            <span className="ml-2"><NavLink to='/mykitchen' exact={true}>My Kitchen</NavLink></span>
-          </a>
-        </li>} */}
       </ul>
       {user && <div class='pl-4'>
     <button className={theme === 'light' ? 'border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded' : 'border-2 border-white px-4 text-white hover:text-avocado hover:bg-white rounded'}><NavLink to='/create' exact={true}>New Post</NavLink></button>
@@ -110,7 +100,6 @@ const NavBar = () => {
         </div>
         <input type="text" className={searchBar} placeholder="Search..." />
       </div>}
-      {/* <button onClick={handleClick}>Click</button> */}
       {theme === 'light' ? <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 </svg> : <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="black">
@@ -130,11 +119,7 @@ const NavBar = () => {
             <p>Demo</p>
           </button>}
           {user && <Dropdown />}
-          {/* {user && <LogoutButton />} */}
     </div>
-    {/* {user && <div class='pl-4'>
-    <button className={theme === 'light' ? 'border-2 border-white px-4 text-white hover:text-peach hover:bg-white rounded' : 'border-2 border-white px-4 text-white hover:text-avocado hover:bg-white rounded'}><NavLink to='/settings' exact={true}>Settings</NavLink></button>
-    </div>} */}
     <div class='ml-6'>
       <a href='https://github.com/owenbeckles/MyVeganKitchen'>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-github" viewBox="0 0 16 16">
@@ -142,13 +127,6 @@ const NavBar = () => {
       </svg>
       </a>
   </div> 
-    {/* <div class='ml-4'>
-      <a href='https://www.linkedin.com/in/becklesowen/'>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-linkedin" viewBox="0 0 16 16">
-  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-</svg>
-      </a>
-    </div> */}
   </div>    
 </nav>
   );

@@ -19,10 +19,6 @@ const IndividualPost = ({post, blogId, setBlogId}) => {
     const paragraph = post.content.split(';');
     const {id} = useParams()
 
-    // useEffect(() => {
-    //     dispatch(getAllBlogPosts())
-    // }, [dispatch, blogId])
-
     const handleClick = () => {
         dispatch(deleteUserPosts(post.id))
         window.location.reload();

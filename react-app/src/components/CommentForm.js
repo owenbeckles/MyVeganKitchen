@@ -22,13 +22,10 @@ const CommentForm = ({recipe, comment, setComments, setIsLoading}) => {
     const handleClick = async(e) => {
         e.preventDefault()
         await sort()
-        // const data = {comment}
-        // console.log('This is data', data)
         console.log("Im in the edit comment function", id)
         const { comments: cs } = dispatch(editComments(comment, id));
         setComments(cs);
         setIsLoading((prev) => !prev);
-        // setComment('')
     }
 
     return (
