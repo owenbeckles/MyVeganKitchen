@@ -34,18 +34,23 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
 ## MVP Feature List
 * User Authentification
     * Sign Up
+        ![SigningUp](/images/MVKSigningUp.gif)
     * Login
+        ![Login](/images/MVKLoggingIn.gif)
     * Demo User
         ![Demo User](/images/MVKDemoExample.gif)
 * Comment on Recipes
     * Delete Comment
+        ![CommentDelete](/images/MVKDeleting.gif)
     * Edit Comment
+        ![CommentEdit](/images/MVKEditComment.gif)
 * Blog Posts
     * Creating Blog Posts
          ![Creating](/images/MVKCreating.gif)
     * Deleting Blog Posts
          ![Deleting](/images/MVKDeleting.gif)
 * User Settings
+         ![Settings](/images/MVKSettings.gif)
 
 ## Dark Mode
 
