@@ -34,23 +34,52 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
 ## MVP Feature List
 * User Authentification
     * Sign Up
+        
+        Users have the ability to sign up for an account by inputing the requested credentials.
+        
         ![SigningUp](/images/MVKSigningUp.gif)
     * Login
+         
+         Users have the ability to login to the application by entering the information they used upon account sign up.
+         
         ![Login](/images/MVKLoggingIn.gif)
     * Demo User
+
+         If users want to access the site without creating an account first, they have the option of entering as a demo user.
+         
         ![Demo User](/images/MVKDemoExample.gif)
 * Comment on Recipes
+    * Creating Comment
+      
+      Authenticated users have the ability to create anonymous comments under the recipe of their choosing.
+      
+      ![CreateComment](/images/MVKComments.gif)
     * Delete Comment
+
+        Authenticated users can choose to delete the comment that they've created.
+         
         ![CommentDelete](/images/MVKDeleting.gif)
     * Edit Comment
+
+        Authenticated users can edit any comment that they've posted.
+
         ![CommentEdit](/images/MVKEditComment.gif)
 * Blog Posts
     * Creating Blog Posts
+
+         Authenticated users have the ability to create blog posts that can be read by other users.
+         
          ![Creating](/images/MVKCreating.gif)
     * Deleting Blog Posts
+
+         Authenticated users can delete any blog post that they've created.
+
          ![Deleting](/images/MVKDeleting.gif)
 * User Settings
-         ![Settings](/images/MVKSettings.gif)
+
+Authenticated users can edit the username and/or email associated with their account.
+
+![Settings](/images/MVKSettings.gif)
 
 ## Dark Mode
 
@@ -63,13 +92,30 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
 ## Application Architecture
 
 ### Database Schema
+   
+   ![DB](/images/MVKDatabaseSchema.png)
+
 ### Frontend Overview
+
+My Vegan Kitchen's frontend was crafted utilizing a React.js / Redux.js data flow. I used Tailwind CSS to style the components and layout. I also used Material UI to render the switch used to change the theme from light mode to dark mode.
+
 ### Backend Overview
+
+My Vegan Kitchen's backend framework was structured using Python/Flask. I arranged my database using SQLAlchemy.
 
 ## Future Features
 * My Kitchen
-    * Google Maps API
+
+"My Kitchen" is a feature that will allow the user to save their favorite recipes. Users will be able to navigate to a "My Kitchen" tab that will have these recipes stored and organized so that they can reference them in the future.
+   
+   * Google Maps API
+    
+      "My Kitchen" will also utilize Google Maps API so that users will be able to save the location of their favorite vegan spots in the area. If the user goes out        and finds a vegan restaurant that they like, they can come to the site after and pin that location on their personalized Google map.
+
 * Added Blog Post Features
+
+I plan to use AWS (Amazon Web Services) to allow users to add a picture of their choice to the plog posts that they create. 
+
 * More Customizable User Settings
 
-## Conclusion
+In this future installment, users will have more data to edit and customize other than just their username and email. I will also incoporate AWS to allow users to have a profile picture associated with their account. This profile picture will be present next to each comment they create.
