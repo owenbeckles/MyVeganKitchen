@@ -57,7 +57,7 @@ My Vegan Kitchen is a full-stack social web application that allow users to brow
 
         Authenticated users can choose to delete the comment that they've created.
          
-        ![CommentDelete](/images/MVKDeleting.gif)
+        ![CommentDelete](/images/MVKDeleteComments.gif)
     * Edit Comment
 
         Authenticated users can edit any comment that they've posted.
