@@ -153,7 +153,7 @@ export default function SplashPage() {
                 <div class=''><h1>Need a new go-to meal? Make sure to stay updated on our <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><NavLink to='/recipes'><strong>latest recipes.</strong></NavLink></em></h1></div>
                 <br></br>
                 <br></br>
-                <div class=''><h1>Trying to view all the recipes you've saved? Head over to <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><strong>My Kitchen.</strong></em></h1></div>
+                {/* <div class=''><h1>Trying to view all the recipes you've saved? Head over to <em class={theme === 'light' ? 'hover:text-peach' : 'hover:text-avocado'}><strong>My Kitchen.</strong></em></h1></div> */}
                 </p>
               </div>
             </div>
