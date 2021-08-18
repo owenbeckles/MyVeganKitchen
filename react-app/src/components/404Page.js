@@ -8,7 +8,7 @@ export default function NotFound() {
     const themeChoice = theme === 'light' ? light : dark;
 
     return (
-      <div className="bg-white min-h-screen flex flex-col lg:relative z-0">
+      <div className="bg-white min-h-screen flex flex-col lg:relative">
         <div className="flex-grow flex flex-col">
           <main className={theme === 'light' ? "flex-grow flex flex-col bg-light-bg" : "flex-grow flex flex-col bg-dark-bg"}>
             <div className="flex-grow mx-auto max-w-7xl w-full flex flex-col px-4 sm:px-6 lg:px-8">
